@@ -2,7 +2,9 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+
 
 /**
  * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
@@ -16,6 +18,9 @@ public class Game {
 
     public Game(){
         // initialize a new game such that each column can store cards
+        for (int i = 0; i < 4; ++i) {
+            cols.add(new ArrayList<Card>(13));
+        }
     }
 
     public void buildDeck() {
@@ -29,10 +34,29 @@ public class Game {
 
     public void shuffle() {
         // shuffles the deck so that it is random
+
+        // Create a copy of the original deck
+        ArrayList<Card> deck2 = new ArrayList<>(this.deck);
+        int deck_size = this.deck.size();
+
+        // Randomize
+        for (int i = 0, j = deck_size; i < deck_size; ++i, --j) {
+            int rand_index = (int)(Math.random() * j);
+            this.deck.set(i, deck2.get(rand_index));
+            deck2.remove(rand_index);
+        }
     }
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
+        int deck_size = deck.size();
+        if (deck_size >= 4) {
+            for (int i = 0; i < 4; ++i) {
+                int last_index = deck_size - 1 - i;
+                Card removed_card = deck.remove(last_index);
+                this.addCardToCol(i, removed_card);
+            }
+        }
     }
 
     public void remove(int columnNumber) {
