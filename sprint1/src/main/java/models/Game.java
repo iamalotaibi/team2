@@ -61,6 +61,19 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+        if (columnNumber > 3)
+            return;
+        Card targetCard = getTopCard(columnNumber);
+        if(columnNumber != 0 && targetCard.suit == getTopCard(0).suit && targetCard.value < getTopCard(0).value)
+            this.removeCardFromCol(columnNumber);
+        else if(columnNumber != 1 && targetCard.suit == getTopCard(1).suit && targetCard.value < getTopCard(1).value)
+            this.removeCardFromCol(columnNumber);
+        else if(columnNumber != 2 && targetCard.suit == getTopCard(2).suit && targetCard.value < getTopCard(2).value)
+            this.removeCardFromCol(columnNumber);
+        else if(columnNumber != 3 && targetCard.suit == getTopCard(3).suit && targetCard.value < getTopCard(3).value)
+            this.removeCardFromCol(columnNumber);
+        else
+            return;
     }
 
     private boolean columnHasCards(int columnNumber) {
