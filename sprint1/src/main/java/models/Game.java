@@ -75,6 +75,16 @@ public class Game {
         else
             return;
         System.out.println("Removed: from (" + columnNumber + ").");
+
+        // check if game is over
+        int game_outcome = hasGameBeenWon();
+        if (game_outcome == 1) {
+            System.out.println("You win!");
+            System.out.println("Score: " + getScore());
+        } else if (game_outcome == -1) {
+            System.out.println("You lost!");
+            System.out.println("Score: " + getScore());
+        }
     }
 
     private boolean columnHasCards(int columnNumber) {
@@ -100,12 +110,26 @@ public class Game {
             this.removeCardFromCol(columnFrom);
             System.out.println("Moved: from (" + columnFrom + "), to (" + columnTo + ").");
         }
+
+        // check if game is over
+        int game_outcome = hasGameBeenWon();
+        if (game_outcome == 1) {
+            System.out.println("You win!");
+            System.out.println("Score: " + getScore());
+        } else if (game_outcome == -1) {
+            System.out.println("You lost!");
+            System.out.println("Score: " + getScore());
+        }
     }
 
     // returns true if there are no cards left if the deck,
     // no cards can be moves, and no cards can be removed
     private boolean inEndState() {
         if (deck.size() == 0) {
+            // check if any cards can be moved
+            if (cols.get(0).size() == 0 || cols.get(1).size() > 0 || cols.get(2).size() > 0 || cols.get(3).size() > 0) {
+                return false;
+            }
             // check if any cards can be removed
             for (int i = 0; i < 4; i++) {
                 for (int j = 0; j < 4; j++) {
@@ -123,12 +147,12 @@ public class Game {
                         return false;
                 }
             }
-            // check if cards can be removed
-            // if both conditions are false, return true
+            // if cards can't be moved or removed,
+            // then the game is in an end state
+            return true;
         } else {
             return false;
         }
-        return false;
     }
 
     // returns 1 if the game has been won,
@@ -136,10 +160,11 @@ public class Game {
     //         0 if moves can still be made.
     public int hasGameBeenWon() {
         int cards_left = cols.get(0).size() + cols.get(1).size() + cols.get(2).size() + cols.get(3).size();
+        boolean end_state = inEndState();
         // The only way cards_left could equal 4 is if the 4 aces are left
-        if (inEndState() && cards_left == 4) {
+        if (end_state && cards_left == 4) {
             return 1;
-        } else if (inEndState() && cards_left != 4) {
+        } else if (end_state) {
             return -1;
         } else {
             return 0;
@@ -147,7 +172,7 @@ public class Game {
     }
 
     public int getScore() {
-        int cards_left = cols.get(0).size() + cols.get(1).size() + cols.get(2).size() + cols.get(3).size();
+        int cards_left = cols.get(0).size() + cols.get(1).size() + cols.get(2).size() + cols.get(3).size() + deck.size();
         return 52 - cards_left;
     }
 
