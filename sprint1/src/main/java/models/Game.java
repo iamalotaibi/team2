@@ -93,7 +93,23 @@ public class Game {
     // no cards can be moves, and no cards can be removed
     private boolean inEndState() {
         if (deck.size() == 0) {
-            // check if cards can be moved from one column to another
+            // check if any cards can be removed
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if (j == i) {
+                        continue;
+                    }
+                    Card targetCard = getTopCard(i);
+                    if (j != 0 && targetCard.suit == getTopCard(0).suit && targetCard.value < getTopCard(0).value)
+                        return false;
+                    else if (j != 1 && targetCard.suit == getTopCard(1).suit && targetCard.value < getTopCard(1).value)
+                        return false;
+                    else if (j != 2 && targetCard.suit == getTopCard(2).suit && targetCard.value < getTopCard(2).value)
+                        return false;
+                    else if (j != 3 && targetCard.suit == getTopCard(3).suit && targetCard.value < getTopCard(3).value)
+                        return false;
+                }
+            }
             // check if cards can be removed
             // if both conditions are false, return true
         } else {
