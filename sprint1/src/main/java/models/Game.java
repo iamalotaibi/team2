@@ -56,11 +56,14 @@ public class Game {
                 Card removed_card = deck.remove(last_index);
                 this.addCardToCol(i, removed_card);
             }
+            System.out.println("Cards left in deck: " + deck.size());
+            int end_state = hasGameBeenWon();
         }
     }
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+
         if (columnNumber > 3)
             return;
         Card targetCard = getTopCard(columnNumber);
@@ -76,15 +79,7 @@ public class Game {
             return;
         System.out.println("Removed: from (" + columnNumber + ").");
 
-        // check if game is over
-        int game_outcome = hasGameBeenWon();
-        if (game_outcome == 1) {
-            System.out.println("You win!");
-            System.out.println("Score: " + getScore());
-        } else if (game_outcome == -1) {
-            System.out.println("You lost!");
-            System.out.println("Score: " + getScore());
-        }
+        int end_state = hasGameBeenWon();
     }
 
     private boolean columnHasCards(int columnNumber) {
@@ -99,6 +94,7 @@ public class Game {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
+
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
         if (columnHasCards(columnFrom) == false)
@@ -111,49 +107,51 @@ public class Game {
             System.out.println("Moved: from (" + columnFrom + "), to (" + columnTo + ").");
         }
 
-        // check if game is over
-        int game_outcome = hasGameBeenWon();
-        if (game_outcome == 1) {
-            System.out.println("You win!");
-            System.out.println("Score: " + getScore());
-        } else if (game_outcome == -1) {
-            System.out.println("You lost!");
-            System.out.println("Score: " + getScore());
-        }
+        int end_state = hasGameBeenWon();
+    }
+
+    private void addCardToCol(int columnTo, Card cardToMove) {
+        cols.get(columnTo).add(cardToMove);
+    }
+
+    private void removeCardFromCol(int colFrom) {
+        this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
     }
 
     // returns true if there are no cards left if the deck,
     // no cards can be moves, and no cards can be removed
     private boolean inEndState() {
-        if (deck.size() == 0) {
-            // check if any cards can be moved
-            if (cols.get(0).size() == 0 || cols.get(1).size() > 0 || cols.get(2).size() > 0 || cols.get(3).size() > 0) {
-                return false;
-            }
-            // check if any cards can be removed
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < 4; j++) {
-                    if (j == i) {
-                        continue;
-                    }
-                    Card targetCard = getTopCard(i);
-                    if (j != 0 && targetCard.suit == getTopCard(0).suit && targetCard.value < getTopCard(0).value)
-                        return false;
-                    else if (j != 1 && targetCard.suit == getTopCard(1).suit && targetCard.value < getTopCard(1).value)
-                        return false;
-                    else if (j != 2 && targetCard.suit == getTopCard(2).suit && targetCard.value < getTopCard(2).value)
-                        return false;
-                    else if (j != 3 && targetCard.suit == getTopCard(3).suit && targetCard.value < getTopCard(3).value)
-                        return false;
-                }
-            }
-            // if cards can't be moved or removed,
-            // then the game is in an end state
-            return true;
-        } else {
+        // deck size must be zero to be in an end state
+        if (deck.size() != 0) {
             return false;
         }
+        // check if any cards can be moved
+        if (cols.get(0).size() == 0 || cols.get(1).size() == 0 || cols.get(2).size() == 0 || cols.get(3).size() == 0) {
+            return false;
+        }
+        // check if cards can be removed from any column
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (j == i) {
+                    continue;
+                }
+                Card targetCard = getTopCard(i);
+                if (j != 0 && targetCard.suit == getTopCard(0).suit && targetCard.value < getTopCard(0).value) {
+                    return false;
+                } else if (j != 1 && targetCard.suit == getTopCard(1).suit && targetCard.value < getTopCard(1).value) {
+                    return false;
+                } else if (j != 2 && targetCard.suit == getTopCard(2).suit && targetCard.value < getTopCard(2).value) {
+                    return false;
+                } else if (j != 3 && targetCard.suit == getTopCard(3).suit && targetCard.value < getTopCard(3).value) {
+                    return false;
+                }
+            }
+        }
+        // if cards can't be moved or removed,
+        // then the game is in an end state
+        return true;
     }
+
 
     // returns 1 if the game has been won,
     //        -1 if the game has been lost,
@@ -163,24 +161,21 @@ public class Game {
         boolean end_state = inEndState();
         // The only way cards_left could equal 4 is if the 4 aces are left
         if (end_state && cards_left == 4) {
+            System.out.println("The game is over!");
+            System.out.println("You win!");
             return 1;
         } else if (end_state) {
+            System.out.println("The game is over!");
+            System.out.println("You lose!");
+            System.out.println("Score: " + getScore());
             return -1;
         } else {
             return 0;
         }
     }
 
-    public int getScore() {
-        int cards_left = cols.get(0).size() + cols.get(1).size() + cols.get(2).size() + cols.get(3).size() + deck.size();
-        return 52 - cards_left;
-    }
-
-    private void addCardToCol(int columnTo, Card cardToMove) {
-        cols.get(columnTo).add(cardToMove);
-    }
-
-    private void removeCardFromCol(int colFrom) {
-        this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
+    private int getScore() {
+        int cards_left = cols.get(0).size() + cols.get(1).size() + cols.get(2).size() + cols.get(3).size();
+        return (52 - cards_left);
     }
 }
