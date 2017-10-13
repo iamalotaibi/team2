@@ -61,7 +61,6 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
-
         if (columnNumber > 3)
             return;
         Card targetCard = getTopCard(columnNumber);
@@ -75,8 +74,6 @@ public class Game {
             this.removeCardFromCol(columnNumber);
         else
             return;
-        System.out.println("Removed: from (" + columnNumber + ").");
-
     }
 
     private boolean columnHasCards(int columnNumber) {
