@@ -61,18 +61,6 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
-//        for(int i = 13; i>0; i--){
-//            if (columnNumber.i != null) {
-//                removeCardFromCol(columnNumber);
-//                score = score + 1;
-//                break;
-//            }
-//            else if (columnNumber.0 = null){
-//                error: no card to remove;
-//            }
-//
-//        }
-
     }
 
     private boolean columnHasCards(int columnNumber) {
