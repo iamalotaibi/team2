@@ -2,7 +2,9 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+
 
 /**
  * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
@@ -73,7 +75,6 @@ public class Game {
         else
             return;
         System.out.println("Removed: from (" + columnNumber + ").");
-
     }
 
     private boolean columnHasCards(int columnNumber) {
