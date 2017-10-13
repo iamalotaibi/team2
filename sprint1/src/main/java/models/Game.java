@@ -74,11 +74,15 @@ public class Game {
             this.removeCardFromCol(columnNumber);
         else
             return;
+        System.out.println("Removed: from (" + columnNumber + ").");
     }
 
     private boolean columnHasCards(int columnNumber) {
         // check indicated column for number of cards; if no cards return false, otherwise return true
-        return false;
+        if (this.cols.get(columnNumber).size() == 0)
+            return false;
+        else
+            return true;
     }
 
     private Card getTopCard(int columnNumber) {
@@ -88,6 +92,15 @@ public class Game {
 
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
+        if (columnHasCards(columnFrom) == false)
+            System.out.println("You can't, (" + columnFrom + ") is empty.");
+        else if (columnHasCards(columnTo) == true)
+            System.out.println("You can't, no empty space in column (" + columnTo + ").");
+        else {
+            this.addCardToCol(columnTo, getTopCard(columnFrom));
+            this.removeCardFromCol(columnFrom);
+            System.out.println("Moved: from (" + columnFrom + "), to (" + columnTo + ").");
+        }
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
