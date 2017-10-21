@@ -62,28 +62,34 @@ public class Game {
     }
 
     public void remove(int columnNumber) {
-        // remove the top card from the indicated column
-
+        // Remove the top card from the indicated column
         if (columnNumber > 3 || columnNumber < 0 || !(columnHasCards(columnNumber))) {
             System.out.println("Cannot remove from Column " + columnNumber );
             return;
         }
-        Card targetCard = getTopCard(columnNumber);
-        if(columnNumber != 0 && targetCard.suit == getTopCard(0).suit && targetCard.value < getTopCard(0).value)
-            this.removeCardFromCol(columnNumber);
-        else if(columnNumber != 1 && targetCard.suit == getTopCard(1).suit && targetCard.value < getTopCard(1).value)
-            this.removeCardFromCol(columnNumber);
-        else if(columnNumber != 2 && targetCard.suit == getTopCard(2).suit && targetCard.value < getTopCard(2).value)
-            this.removeCardFromCol(columnNumber);
-        else if(columnNumber != 3 && targetCard.suit == getTopCard(3).suit && targetCard.value < getTopCard(3).value)
-            this.removeCardFromCol(columnNumber);
+        // Use remove function from instructor-posted sprint1
+        Card c = getTopCard(columnNumber);
+        boolean removeCard = false;
+        for (int i = 0; i < 4; i++) {
+            if (i != columnNumber) {
+                if (columnHasCards(i)) {
+                    Card compare = getTopCard(i);
+                    if (compare.getSuit() == c.getSuit()) {
+                        if (compare.getValue() > c.getValue()) {
+                            removeCard = true;
+                        }
+                    }
+                }
+            }
+        }
+        if (removeCard) {
+            this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
+            System.out.println("Removed from Column " + columnNumber );
+            int end_state = hasGameBeenWon();
+        }
         else {
             System.out.println("Cannot remove from Column " + columnNumber );
-            return;
         }
-        System.out.println("Removed from Column " + columnNumber );
-
-        int end_state = hasGameBeenWon();
     }
 
     private boolean columnHasCards(int columnNumber) {
