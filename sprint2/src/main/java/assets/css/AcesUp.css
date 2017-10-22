@@ -3,14 +3,43 @@ body{
     color: #dc4405;
     font-family: 'Ubuntu', sans-serif;
     margin: 0;
-    padding: 15px;
 }
 
-h1{
+#site-header{
+    display: block;
+}
+
+#logo{
+    display: inline-block;
     font-family: 'Lobster', cursive;
     font-size: 50px;
     padding: 20px;
-    margin: 0;
+}
+
+#status-bar{
+    display: inline-block;
+    font-size: 20px;
+    background-color: #606060;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: 90px;
+}
+
+#site-sidebar{
+    float: left;
+    padding: 10px;
+    background-color: #a5a5a5;
+    border-radius: 5px;
+    height: 300px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#site-game{
+    background-color: #a5a5a5;
+    border-radius: 5px;
+    padding: 2px;
+    float: left;
 }
 
 #dealButton{
@@ -20,8 +49,8 @@ h1{
     color: #dc4405;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #7c7c7c;
-    border: inset #7c7c7c;
+    background-color: #606060;
+    border: inset #606060;
 }
 
 #dealButton:hover{
@@ -57,7 +86,7 @@ td{
 }
 
 .cardLocation{
-    background-color: #7c7c7c;
+    background-color: #606060;
     border-radius: 5px;
     padding: 5px;
     font-size: 25px;
@@ -68,15 +97,34 @@ td{
     cursor: pointer;
 }
 
+.cardLocation.top.cardMovable:active {
+    border: inset #dc4405;
+    cursor: pointer;
+}
+
+.cardLocation.l0.empty{
+    background-color: transparent;
+    border: dashed;
+    border-color: #606060;
+}
+
 .hidden {
     display: none;
 }
 
-.cardEmpty{
+.empty{
     background-color: transparent;
     cursor: auto;
     border: none;
 }
-.cardEmpty:hover{
+
+.empty:hover{
     border: none;
+}
+
+#beaver-logo{
+    position: fixed;
+    left: 18px;
+    bottom: 50px;
+    max-width: 125px;
 }
