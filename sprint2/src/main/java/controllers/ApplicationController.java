@@ -30,7 +30,7 @@ public class ApplicationController {
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-    
+
     public Result gameGet(){
         Game g = new Game();
         g.buildDeck();
@@ -64,8 +64,8 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
-	public Result cardClicked(Context context, @PathParam("column") int column, @PathParam("row") int row, Game g){
-		g.processCardSelection(column, row);
+    public Result cardClicked(Context context, @PathParam("column") int column, @PathParam("row") int row, Game g){
+        g.processCardSelection(column, row);
         g.updateTopCardModes();
         return Results.json().render(g);
     }
