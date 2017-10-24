@@ -14,6 +14,7 @@ td {
 
 .cardLocation {
     width: 100px;
+	cursor: pointer;
     transition: all 0.15s ease-in-out;
     -webkit-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
