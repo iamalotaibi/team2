@@ -1,5 +1,5 @@
 body{
-    background-color: #424242;
+    background-color: #363636;
     color: #dc4405;
     font-family: 'Ubuntu', sans-serif;
     margin: 0;
@@ -55,6 +55,7 @@ body{
 
 #dealButton:hover{
     border: inset #dc4405;
+    background-color: #7a7a7a;
 }
 tr .title{
     display: none;
