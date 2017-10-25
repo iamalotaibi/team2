@@ -1,10 +1,13 @@
 <link href="/assets/css/AcesUp.css" rel="stylesheet">
 <link href="/assets/css/custom.css" rel="stylesheet">
+
 <link href="https://fonts.googleapis.com/css?family=Lobster|Ubuntu" rel="stylesheet">
+
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
 <body>
 <div id="site-header">
+
     <div id="logo">Aces Up</div>
     <div id="status-bar">
         <div id="status-text">
@@ -38,284 +41,231 @@
                 <button id="moveButton">Move</button>
             </div>
             <div id="score-area">
-
+            
             </div>
             <img id=beaver-logo src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Oregon_State_Beavers_logo.svg/400px-Oregon_State_Beavers_logo.svg.png">
-        </div>
-        <div id="site-game">
+
+
+<table>
+    <tr class="title">
+        <td>Column0</td>
+        <td>Column1</td>
+        <td>Column2</td>
+        <td>Column3</td>
+    </tr>
+    <tr>
+        <td class="columnOfCards" id="c0">
             <table>
-                <tr class="title">
-                    <td>Column0</td>
-                    <td >Column1</td>
-                    <td >Column2</td>
-                    <td >Column3</td>
-                </tr>
-                <tr><td class="columnOfCards" id="c0">
-                    <table>
-                        <tr><td class="cardLocation l0 empty">
-                            <div class="empty" id="0-0"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l1">
-                            <div class="empty" id="0-1"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l2">
-                            <div class="empty" id="0-2"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l3">
-                            <div class="empty" id="0-3"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l4">
-                            <div class="empty" id="0-4"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l5">
-                            <div class="empty" id="0-5"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l6">
-                            <div class="empty" id="0-6"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l7">
-                            <div class="empty" id="0-7"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l8">
-                            <div class="empty" id="0-8"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l9">
-                            <div class="empty" id="0-9"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l10">
-                            <div class="empty" id="0-10"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l11">
-                            <div class="empty" id="0-11"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l12">
-                            <div class="empty" id="0-12"></div>
-                        </td></tr>
-                        <tr><td class="cardLocation l13">
-                            <div class="empty" id="0-13"></div>
-                        </td></tr>
-                    </table>
-                </td>
-                    <td class="columnOfCards" id="c1">
-                        <table>
-                            <tr><td class="cardLocation l0 top cardMovable">
-                                <div class="empty" id="1-0"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l1 empty">
-                                <div class="empty" id="1-1"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l2 empty">
-                                <div class="empty" id="1-2"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l3">
-                                <div class="empty" id="1-3"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l4">
-                                <div class="empty" id="1-4"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l5">
-                                <div class="empty" id="1-5"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l6">
-                                <div class="empty" id="1-6"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l7">
-                                <div class="empty" id="1-7"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l8">
-                                <div class="empty" id="1-8"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l9">
-                                <div class="empty" id="1-9"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l10">
-                                <div class="empty" id="1-10"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l11">
-                                <div class="empty" id="1-11"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l12">
-                                <div class="empty" id="1-12"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l13">
-                                <div class="empty" id="1-13"></div>
-                            </td></tr>
-                        </table>
-                    </td>
-                    <td class="columnOfCards" id="c2">
-                        <table>
-                            <tr><td class="cardLocation l0">
-                                <div class="empty" id="2-0"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l1">
-                                <div class="empty" id="2-1"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l2">
-                                <div class="empty" id="2-2"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l3">
-                                <div class="empty" id="2-3"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l4">
-                                <div class="empty" id="2-4"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l5">
-                                <div class="empty" id="2-5"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l6">
-                                <div class="empty" id="2-6"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l7">
-                                <div class="empty" id="2-7"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l8">
-                                <div class="empty" id="2-8"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l9">
-                                <div class="empty" id="2-9"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l10">
-                                <div class="empty" id="2-10"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l11">
-                                <div class="empty" id="2-11"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l12">
-                                <div class="empty" id="2-12"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l13">
-                                <div class="empty" id="2-13"></div>
-                            </td></tr>
-                        </table>
-                    </td>
-                    <td class="columnOfCards" id="c3">
-                        <table>
-                            <tr><td class="cardLocation l0">
-                                <div class="empty" id="3-0"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l1">
-                                <div class="empty" id="3-1"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l2">
-                                <div class="empty" id="3-2"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l3">
-                                <div class="empty" id="3-3"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l4">
-                                <div class="empty" id="3-4"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l5">
-                                <div class="empty" id="3-5"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l6">
-                                <div class="empty" id="3-6"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l7">
-                                <div class="empty" id="3-7"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l8">
-                                <div class="empty" id="3-8"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l9">
-                                <div class="empty" id="3-9"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l10">
-                                <div class="empty" id="3-10"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l11">
-                                <div class="empty" id="3-11"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l12">
-                                <div class="empty" id="3-12"></div>
-                            </td></tr>
-                            <tr><td class="cardLocation l13">
-                                <div class="empty" id="3-13"></div>
-                            </td></tr>
-                        </table>
-                    </td>
-                </tr>
+                <tr><td class="cardLocation l0" id="0-0"></td></tr>
+                <tr><td class="cardLocation l1" id="0-1"></td></tr>
+                <tr><td class="cardLocation l2" id="0-2"></td></tr>
+                <tr><td class="cardLocation l3" id="0-3"></td></tr>
+                <tr><td class="cardLocation l4" id="0-4"></td></tr>
+                <tr><td class="cardLocation l5" id="0-5"></td></tr>
+                <tr><td class="cardLocation l6" id="0-6"></td></tr>
+                <tr><td class="cardLocation l7" id="0-7"></td></tr>
+                <tr><td class="cardLocation l8" id="0-8"></td></tr>
+                <tr><td class="cardLocation l9" id="0-9"></td></tr>
+                <tr><td class="cardLocation l10" id="0-10"></td></tr>
+                <tr><td class="cardLocation l11" id="0-11"></td></tr>
+                <tr><td class="cardLocation l12" id="0-12"></td></tr>
+                <tr><td class="cardLocation l13" id="0-13"></td></tr>
             </table>
-        </div>
-    </main>
-</div>
+        </td>
+        <td class="columnOfCards" id="c1">
+            <table>
+                <tr><td class="cardLocation l0" id="1-0"></td></tr>
+                <tr><td class="cardLocation l1" id="1-1"></td></tr>
+                <tr><td class="cardLocation l2" id="1-2"></td></tr>
+                <tr><td class="cardLocation l3" id="1-3"></td></tr>
+                <tr><td class="cardLocation l4" id="1-4"></td></tr>
+                <tr><td class="cardLocation l5" id="1-5"></td></tr>
+                <tr><td class="cardLocation l6" id="1-6"></td></tr>
+                <tr><td class="cardLocation l7" id="1-7"></td></tr>
+                <tr><td class="cardLocation l8" id="1-8"></td></tr>
+                <tr><td class="cardLocation l9" id="1-9"></td></tr>
+                <tr><td class="cardLocation l10" id="1-10"></td></tr>
+                <tr><td class="cardLocation l11" id="1-11"></td></tr>
+                <tr><td class="cardLocation l12" id="1-12"></td></tr>
+                <tr><td class="cardLocation l13" id="1-13"></td></tr>
+            </table>
+        </td>
+        <td class="columnOfCards" id="c2">
+            <table>
+                <tr><td class="cardLocation l0" id="2-0"></td></tr>
+                <tr><td class="cardLocation l1" id="2-1"></td></tr>
+                <tr><td class="cardLocation l2" id="2-2"></td></tr>
+                <tr><td class="cardLocation l3" id="2-3"></td></tr>
+                <tr><td class="cardLocation l4" id="2-4"></td></tr>
+                <tr><td class="cardLocation l5" id="2-5"></td></tr>
+                <tr><td class="cardLocation l6" id="2-6"></td></tr>
+                <tr><td class="cardLocation l7" id="2-7"></td></tr>
+                <tr><td class="cardLocation l8" id="2-8"></td></tr>
+                <tr><td class="cardLocation l9" id="2-9"></td></tr>
+                <tr><td class="cardLocation l10" id="2-10"></td></tr>
+                <tr><td class="cardLocation l11" id="2-11"></td></tr>
+                <tr><td class="cardLocation l12" id="2-12"></td></tr>
+                <tr><td class="cardLocation l13" id="2-13"></td></tr>
+            </table>
+        </td>
+        <td class="columnOfCards" id="c3">
+            <table>
+                <tr><td class="cardLocation l0" id="3-0"></td></tr>
+                <tr><td class="cardLocation l1" id="3-1"></td></tr>
+                <tr><td class="cardLocation l2" id="3-2"></td></tr>
+                <tr><td class="cardLocation l3" id="3-3"></td></tr>
+                <tr><td class="cardLocation l4" id="3-4"></td></tr>
+                <tr><td class="cardLocation l5" id="3-5"></td></tr>
+                <tr><td class="cardLocation l6" id="3-6"></td></tr>
+                <tr><td class="cardLocation l7" id="3-7"></td></tr>
+                <tr><td class="cardLocation l8" id="3-8"></td></tr>
+                <tr><td class="cardLocation l9" id="3-9"></td></tr>
+                <tr><td class="cardLocation l10" id="3-10"></td></tr>
+                <tr><td class="cardLocation l11" id="3-11"></td></tr>
+                <tr><td class="cardLocation l12" id="3-12"></td></tr>
+                <tr><td class="cardLocation l13" id="3-13"></td></tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<button id="dealButton">Deal</button>
+<BR>Remove from: <button id="Remove1">Column0</button><button id="Remove2">Column1</button><button id="Remove3">Column2</button><button id="Remove4">Column3</button>
+
+<BR>Move from column <input type="text" id="from_col"  /> to <input type="text" id="to_col"  /> <button id="moveButton">Move</button>
 
 <script>
-    var game;
-    function display(game) {
-        console.log(game);
-        $( '.columnOfCards .cardLocation' ).html("");
-        $.each(game.cols[0], function( key, val ) {
-            $( '#c0 .l'+key ).html(val.value + val.suit);
-        });
-        $.each(game.cols[1], function( key, val ) {
-            $( '#c1 .l'+key ).html(val.value + val.suit);
-        });
-        $.each(game.cols[2], function( key, val ) {
-            $( '#c2 .l'+key ).html(val.value + val.suit);
-        });
-        $.each(game.cols[3], function( key, val ) {
-            $( '#c3 .l'+key ).html(val.value + val.suit);
-        });
+
+var game;
+var card_modes_class_map = [
+    "cardDefault",
+    "cardMovable",
+    "cardRemovable",
+    "cardSelected",
+    "cardDestination"
+];
+
+
+function display(game) {
+    console.log(game);
+
+    $( '.columnOfCards .cardLocation' ).html("");
+
+    $.each(game.cols[0], function( key, val ) {
+        $( '#c0 .l'+key ).html(val.value + val.suit);
+    });
+
+    $.each(game.cols[1], function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
+    });
+
+    $.each(game.cols[2], function( key, val ) {
+        $( '#c2 .l'+key ).html(val.value + val.suit);
+    });
+
+    $.each(game.cols[3], function( key, val ) {
+        $( '#c3 .l'+key ).html(val.value + val.suit);
+    });
+
+    // Reset CSS classes
+    $(".cardLocation").removeClass("cardMovable cardRemovable cardSelected cardDestination").addClass("cardDefault");
+
+    // Update CSS classes of top cards
+    var i = 0;
+    for (i = 0; i < 4; ++i) {
+        if (game.top_card_rows[i] >= 0) {
+            //alert('#c' + i + ' .l' + game.top_card_rows[i] + ' - ' + card_modes_class_map[game.top_card_modes[i]]);
+            $( '#c' + i + ' .l' + game.top_card_rows[i]).removeClass("cardDefault").addClass(card_modes_class_map[game.top_card_modes[i]]);
+        }
     }
-    // Calls ApplicationController.gameGet()
-    $.getJSON("http://localhost:8080/game", function( data ) {
-        display(data);
-        game = data;
+}
+
+$(".cardLocation").click(function() {
+    var id_data = this.id.split('-'); // col-row
+
+    $.ajax({
+        type: "POST",
+        url: "/cardClicked/"+id_data[0]+"/"+id_data[1],
+        data: JSON.stringify(game),
+        success: function(data, status) {
+          console.log("Data: " + data + "\nStatus: " + status);
+          game = data;
+          display(data);
+        },
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
     });
-    $("#dealButton").click(function(){
-        $.ajax({
-            type: "POST",
-            url: "/dealGame",
-            data: JSON.stringify(game),
-            success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-                game = data;
-                display(data);},
-            contentType:"application/json; charset=utf-8",
-            dataType:"json",
-        });
+});
+
+// Calls ApplicationController.gameGet()
+$.getJSON("http://localhost:8080/game", function( data ) {
+    display(data);
+    game = data;
+});
+
+
+$("#dealButton").click(function(){
+    $.ajax({
+        type: "POST",
+        url: "/dealGame",
+        data: JSON.stringify(game),
+        success: function(data, status) {
+            console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);
+        },
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
     });
-    function removeCard(colNumber){
-        $.ajax({
-            type: "POST",
-            url: "/removeCard/"+colNumber,
-            data: JSON.stringify(game),
-            success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-                game = data;
-                display(data);},
-            contentType:"application/json; charset=utf-8",
-            dataType:"json",
-        });
-    }
-    $("#Remove0").click(function(){
-        removeCard(0);
+});
+
+
+function removeCard(colNumber){
+    $.ajax({
+        type: "POST",
+        url: "/removeCard/"+colNumber,
+        data: JSON.stringify(game),
+        success: function(data, status){
+            console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);
+        },
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
     });
-    $("#Remove1").click(function(){
-        removeCard(1);
+}
+
+
+$("#Remove0").click(function(){
+    removeCard(0);
+});
+$("#Remove1").click(function(){
+    removeCard(1);
+});
+$("#Remove2").click(function(){
+    removeCard(2);
+});
+$("#Remove3").click(function(){
+    removeCard(3);
+});
+
+$("#moveButton").click(function(){
+    var colFrom = $("#from_col").val();
+    var colTo = $("#to_col").val();
+    $.ajax({
+        type: "POST",
+        url: "/moveCard/"+colFrom+"/"+colTo,
+        data: JSON.stringify(game),
+        success: function(data, status){
+            console.log("Data: " + data + "\nStatus: " + status);
+            game = data;
+            display(data);
+        },
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
     });
-    $("#Remove2").click(function(){
-        removeCard(2);
-    });
-    $("#Remove3").click(function(){
-        removeCard(3);
-    });
-    $("#moveButton").click(function(){
-        var colFrom = $("#from_col").val();
-        var colTo = $("#to_col").val();
-        $.ajax({
-            type: "POST",
-            url: "/moveCard/"+colFrom+"/"+colTo,
-            data: JSON.stringify(game),
-            success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-                game = data;
-                display(data);},
-            contentType:"application/json; charset=utf-8",
-            dataType:"json",
-        });
-    });
+});
+
 </script>
-
-
-
 </body>
 </html>
