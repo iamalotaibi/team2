@@ -15,20 +15,27 @@ public class Game {
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
+    public Boolean card_selected = false;
+    public Integer card_selected_rc[] = new Integer[2];
+    public Integer top_card_modes[] = new Integer[4];
+    public Integer top_card_rows[] = new Integer[4];
+
 
     public Game(){
         // initialize a new game such that each column can store cards
         for (int i = 0; i < 4; ++i) {
-            cols.add(new ArrayList<Card>(13));
+            this.cols.add(new ArrayList<Card>(13));
+            this.top_card_modes[i] = 0;
+            this.top_card_rows[i] = 0;
         }
     }
 
     public void buildDeck() {
         for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
+            this.deck.add(new Card(i,Suit.Clubs));
+            this.deck.add(new Card(i,Suit.Hearts));
+            this.deck.add(new Card(i,Suit.Diamonds));
+            this.deck.add(new Card(i,Suit.Spades));
         }
     }
 
@@ -49,14 +56,14 @@ public class Game {
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
-        int deck_size = deck.size();
+        int deck_size = this.deck.size();
         if (deck_size >= 4) {
             for (int i = 0; i < 4; ++i) {
                 int last_index = deck_size - 1 - i;
-                Card removed_card = deck.remove(last_index);
+                Card removed_card = this.deck.remove(last_index);
                 this.addCardToCol(i, removed_card);
             }
-            System.out.println("Cards left in deck: " + deck.size());
+            System.out.println("Cards left in deck: " + this.deck.size());
             int end_state = hasGameBeenWon();
         }
     }
@@ -121,7 +128,7 @@ public class Game {
     }
 
     private void addCardToCol(int columnTo, Card cardToMove) {
-        cols.get(columnTo).add(cardToMove);
+        this.cols.get(columnTo).add(cardToMove);
     }
 
     private void removeCardFromCol(int colFrom) {
@@ -132,11 +139,11 @@ public class Game {
     // no cards can be moves, and no cards can be removed
     private boolean inEndState() {
         // deck size must be zero to be in an end state
-        if (deck.size() != 0) {
+        if (this.deck.size() != 0) {
             return false;
         }
         // check if any cards can be moved
-        if (cols.get(0).size() == 0 || cols.get(1).size() == 0 || cols.get(2).size() == 0 || cols.get(3).size() == 0) {
+        if (this.cols.get(0).size() == 0 || this.cols.get(1).size() == 0 || this.cols.get(2).size() == 0 || this.cols.get(3).size() == 0) {
             return false;
         }
         // check if cards can be removed from any column
@@ -167,7 +174,7 @@ public class Game {
     //        -1 if the game has been lost,
     //         0 if moves can still be made.
     public int hasGameBeenWon() {
-        int cards_left = cols.get(0).size() + cols.get(1).size() + cols.get(2).size() + cols.get(3).size();
+        int cards_left = this.cols.get(0).size() + this.cols.get(1).size() + this.cols.get(2).size() + this.cols.get(3).size();
         boolean end_state = inEndState();
         // The only way cards_left could equal 4 is if the 4 aces are left
         if (end_state && cards_left == 4) {
@@ -185,7 +192,144 @@ public class Game {
     }
 
     private int getScore() {
-        int cards_left = cols.get(0).size() + cols.get(1).size() + cols.get(2).size() + cols.get(3).size();
+        int cards_left = this.cols.get(0).size() + this.cols.get(1).size() + this.cols.get(2).size() + this.cols.get(3).size();
         return (52 - cards_left);
+    }
+
+    public boolean isCardRemovable(int column) {
+        // Validate
+        if (column < 0 || column > 3 || !columnHasCards(column))
+            return false;
+        // Test if card can be removed
+        Card c = getTopCard(column);
+        for (int i = 0; i < 4; ++i) {
+            if (i != column && columnHasCards(i)) {
+                Card compare = getTopCard(i);
+                if (compare.getSuit() == c.getSuit() && compare.getValue() > c.getValue())
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isCardMovable(int column) {
+        // Validate
+        if (column < 0 || column > 3 || !columnHasCards(column))
+            return false;
+        // Test if card can be moved
+        for (int i = 0; i < 4; ++i) {
+            if (i != column && !columnHasCards(i))
+                return true;
+        }
+        return false;
+    }
+
+    // This is triggered whenever user selects a card.
+    // Returns
+    //  * 0 if selection is invalid.
+    //  * 1 if a card is removed.
+    //  * 2 if a card is selected.
+    //  * 3 if originally selected card is moved to another location.
+    public int processCardSelection(int col, int row) {
+        // Validate col
+        if (col < 0 || col > 3) {
+            this.card_selected = false;
+            System.out.println("Selected column invalid!");
+            return 0;
+        }
+        // Obtain top empty row at a column
+        int top_empty_row = this.cols.get(col).size();
+        // Validate row
+        if (row < top_empty_row - 1 || row > top_empty_row) {
+            this.card_selected = false;
+            System.out.println("Selected row invalid!");
+            return 0;
+        }
+        // Validate selected card (just in case)
+        if (this.card_selected && (this.card_selected_rc[1] != this.cols.get(this.card_selected_rc[0]).size() - 1 || !isCardMovable(this.card_selected_rc[0]))) {
+            this.card_selected = false;
+            System.out.println("Original selection determined invalid and cleared!");
+        }
+
+        // Performing selection
+        // If a card is already selected,
+        //   - the selected card could be moved to a new location
+        //   - a different selection could be made
+        // If there is no selection yet,
+        //  - selection could be made
+        // When a selection is made,
+        //  - if the location contains a card
+        //      - if the card can be removed, it will be removed
+        //      - if the card can be moved, it will be selected
+        //  - if the location is empty/invalid
+        //      - current selection is cleared
+
+        // Move card if selection is valid
+        System.out.println("Card selected: " + String.valueOf(this.card_selected));
+        if (this.card_selected && col != this.card_selected_rc[0] && !columnHasCards(col) && row == 0) {
+            move(this.card_selected_rc[0], col);
+            this.card_selected = false;
+            System.out.println("Selected card moved!");
+            return 3;
+        }
+        // Otherwise perform a new selection if valid
+        else if (row == top_empty_row - 1) {
+            if (isCardRemovable(col)) {
+                remove(col);
+                this.card_selected = false;
+                System.out.println("Card at location removed!");
+                return 1;
+            }
+            else if (isCardMovable(col)) {
+                this.card_selected_rc[0] = col;
+                this.card_selected_rc[1] = row;
+                this.card_selected = true;
+                System.out.println("Card at location selected!");
+                return 2;
+            }
+        }
+        // If all fails, clear selection
+        this.card_selected = false;
+        System.out.println("Selection cleared/invalid!");
+        return 0;
+    }
+
+    // Call this every time dealing, moving, or removing.
+    public void clearCardSelection() {
+        this.card_selected = false;
+    }
+
+    // Call this every time dealing, moving, or removing.
+    public void updateTopCardModes() {
+        // Modes: 0 - default; 1 - movable; 2 - removable; 3 - selected; 4 - destination
+        if (this.card_selected) {
+            this.top_card_modes[this.card_selected_rc[0]] = 3;
+            for (int i = 0; i < 4; ++i) {
+                this.top_card_rows[i] = this.cols.get(i).size() - 1;
+                if (i != this.card_selected_rc[0]) {
+                    if (this.top_card_rows[i] == -1) {
+                        this.top_card_modes[i] = 4;
+                        this.top_card_rows[i] = 0;
+                    }
+                    else if (this.isCardRemovable(i))
+                        this.top_card_modes[i] = 2;
+                    else if (this.isCardMovable(i))
+                        this.top_card_modes[i] = 1;
+                    else
+                        this.top_card_modes[i] = 0;
+                }
+            }
+        }
+        else {
+            for (int i = 0; i < 4; ++i) {
+                this.top_card_rows[i] = this.cols.get(i).size() - 1;
+                if (this.isCardRemovable(i))
+                    this.top_card_modes[i] = 2;
+                else if (this.isCardMovable(i))
+                    this.top_card_modes[i] = 1;
+                else
+                    this.top_card_modes[i] = 0;
+            }
+        }
     }
 }
