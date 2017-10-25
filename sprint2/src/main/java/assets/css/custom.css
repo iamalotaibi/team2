@@ -1,2 +1,84 @@
 /* Add additional stylesheets below
 -------------------------------------------------- */
+/* Main Skeleton */
+body{
+padding:0;
+margin: 0;
+background-color: #F0F0F0;
+}
+#site-header{
+display:block;
+background-color: blue;
+width: 100%;
+max-height: 2%;
+}
+#logo{
+display:block;
+background-color: grey;
+float: left;
+min-width: 140px;
+width: 20%;
+text-align: center;
+padding-top: 1.5rem;
+padding-bottom: 1.5rem;
+
+}
+#status-bar{
+display:block;
+float: left;
+width: 80%;
+min-width: 490px;
+background: black;
+color:green;
+padding-top: 1.5rem;
+padding-bottom: 1.5rem;
+}
+#site-content{
+display:block;
+
+width: 100%;
+min-width: 700px;
+}
+#site-sidebar{
+background-color: grey;
+float: left;
+width: 20%;
+min-width: 140px;
+height:100%;
+}
+#deal-btn{
+width:95%;
+}
+#dealButton{
+width:100%;
+padding-top: 1rem;
+padding-bottom: 1rem;
+}
+#remove-btns{
+width: 95%;
+}
+#remove-btns button{
+width:23.75%;
+padding-top: 1rem;
+padding-bottom: 1rem;
+}
+#move-btns{
+width: 95%;
+}
+#move-btns input{
+padding-top: .5rem;
+padding-bottom: .5rem;
+}
+#site-game{
+background-color: red;
+float: left;
+width: 70%;
+min-width: 490px;
+}
+#site-game table {
+width: 100%;
+}
+.cardLocation{
+padding-top: 1.5rem;
+padding-bottom: 1.5rem;
+}
