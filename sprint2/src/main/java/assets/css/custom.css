@@ -82,3 +82,60 @@ width: 100%;
 padding-top: 1.5rem;
 padding-bottom: 1.5rem;
 }
+tr {
+    width: 500px;
+}
+
+td {
+    width: 100px;
+    height: 20px;
+    text-align: center;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.cardLocation {
+    width: 100px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    -webkit-transition: all 0.15s ease-in-out;
+    -moz-transition: all 0.15s ease-in-out;
+}
+
+.cardDefault {
+    background-color: #F0F0F0;
+}
+
+.cardMovable {
+    background-color: #F0F0F0;
+}
+
+.cardMovable:hover {
+    background-color: #6485D1;
+}
+
+.cardRemovable {
+    background-color: #F0F0F0;
+}
+
+.cardRemovable:hover {
+    background-color: #F7054A;
+}
+
+.cardSelected {
+    background-color: #2DD624;
+}
+
+.cardSelected:hover {
+    background-color: #2DD624;
+}
+
+.cardDestination {
+    background-color: #BBCEF2;
+}
+
+.cardDestination:hover {
+    background-color: #83A5E6;
+}
