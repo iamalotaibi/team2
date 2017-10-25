@@ -228,7 +228,7 @@
                                 <div class="empty" id="3-12"></div>
                             </td></tr>
                             <tr><td class="cardLocation l13">
-                                <div class="empty" id="3-13"></div>
+                                <div class="empty" id="3-13">dsfgdafgad</div>
                             </td></tr>
                         </table>
                     </td>
@@ -245,7 +245,7 @@ var game;
 function display(game) {
 console.log(game);
 
-$( '.columnOfCards .cardLocation' ).html("");
+$( '.columnOfCards .cardLocation div' ).html("");
 
     $.each(game.cols[0], function( key, val ) {
         $( '#c0 .l'+key ).html(val.value + val.suit);
