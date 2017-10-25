@@ -4,7 +4,7 @@ tr {
 
 td {
     width: 100px;
-    height: 20px;
+    height: 30px;
     text-align: center;
 }
 
@@ -14,10 +14,12 @@ td {
 
 .cardLocation {
     width: 100px;
+    font-size: 24px;
 	cursor: pointer;
     transition: all 0.15s ease-in-out;
     -webkit-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
+
 }
 
 .cardDefault {
@@ -54,4 +56,8 @@ td {
 
 .cardDestination:hover {
     background-color: #83A5E6;
+}
+
+.red_card {
+    color: #ff0008;
 }
