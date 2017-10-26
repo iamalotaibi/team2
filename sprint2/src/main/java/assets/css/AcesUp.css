@@ -29,7 +29,7 @@ body{
 #site-sidebar{
     float: left;
     padding: .75rem;
-    background-color: #a5a5a5;
+    background-color: #b3b3b3;
     border-radius: 5px;
     max-width: 15%;
     margin-right: 10px;
@@ -37,7 +37,7 @@ body{
 }
 
 #site-game{
-    background-color: #a5a5a5;
+    background-color: #b3b3b3;
     border-radius: 5px;
     padding: 2px;
     float: left;
@@ -55,14 +55,7 @@ body{
     border: inset #606060;
     text-align: center;
     outline: none;
-}
-
-#remove-area{
-    display: none;
-}
-
-#move-area{
-    display: none;
+    margin-bottom: 1.5rem;
 }
 
 #score-area{
@@ -84,13 +77,35 @@ body{
     background-color: #7a7a7a;
 }
 
+#text-area{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    padding-right: .75rem;
+    padding-left: .75rem;
+    color: #dc4405;
+    border-radius: 5px;
+    background-color: #606060;
+    border: inset #606060;
+    outline: none;
+    cursor: default;
+    margin-top: .75rem;
+    margin-bottom: 0;
+    line-height: 1.1rem;
+}
+
+li{
+    list-style-type: none;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+}
+
 table{
     border-spacing: 2px 5px;
 }
 
 .board{
     width: 700px;
-    background-color: #a5a5a5;
+    background-color: #b3b3b3;
     border: #dc4405;
     border-radius: 5px;
     padding: 2px;
@@ -134,25 +149,15 @@ td{
     cursor: pointer;
 }
 
-.cardLocation.l0.empty{
+.cardDestination {
     background-color: transparent;
     border: dashed;
     border-color: #606060;
-
+    cursor: pointer;
 }
 
 .hidden {
     display: none;
-}
-
-.empty{
-    background-color: transparent;
-    cursor: auto;
-    border: none;
-}
-
-.empty:hover{
-    border: none;
 }
 
 #beaver-logo{
