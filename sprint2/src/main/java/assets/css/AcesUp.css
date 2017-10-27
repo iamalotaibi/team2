@@ -1,57 +1,203 @@
-tr {
-    width: 500px;
+body{
+    background-color: #363636;
+    color: #dc4405;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-td {
-    width: 100px;
-    height: 20px;
+#site-header{
+    display: block;
+}
+
+#logo{
+    display: inline-block;
+    font-family: 'Lobster', cursive;
+    font-size: 65px;
+    padding: 1.5rem;
+    text-shadow: 0.05rem 0.05rem .2rem #606060;
+    cursor: default;
+}
+
+#status-bar{
+    display: inline-block;
+    font-size: 20px;
+    background-color: #606060;
+    border-radius: 5px;
+    padding: .75rem;
+    margin-left: 12%;
     text-align: center;
+    box-shadow: 0.05rem 0.05rem .2rem #606060;
+    cursor: default;
 }
 
-.title {
-    font-weight: bold;
+#site-sidebar{
+    float: left;
+    padding: .75rem;
+    background-color: #b3b3b3;
+    border-radius: 5px;
+    max-width: 15%;
+    margin-right: 10px;
+    margin-left: 10px;
+    box-shadow: 0.1rem 0.1rem .5rem 2px #606060;
 }
 
-.cardLocation {
-    width: 100px;
-	cursor: pointer;
+#site-game{
+    background-color: #b3b3b3;
+    border-radius: 5px;
+    padding: 2px;
+    float: left;
+    box-shadow: 0.1rem 0.1rem .5rem 2px #606060;}
+
+#dealButton{
+    font-family: 'Lobster', cursive;
+    font-size: 50px;
+    width:100%;
+    padding: .75rem;
+    color: #dc4405;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #606060;
+    border: inset #606060;
+    text-align: center;
+    outline: none;
+    margin-bottom: 1.5rem;
+}
+
+#score-area{
+    font-family: 'Lobster', cursive;
+    font-size: 32px;
+    padding: .75rem;
+    color: #dc4405;
+    border-radius: 5px;
+    background-color: #606060;
+    text-align: center;
+    border: inset #606060;
+    cursor: default;
+}
+
+
+#dealButton:hover{
+    border: inset #dc4405;
+    background-color: #7a7a7a;
+}
+
+#text-area{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+    padding-right: .75rem;
+    padding-left: .75rem;
+    color: #dc4405;
+    border-radius: 5px;
+    background-color: #606060;
+    border: inset #606060;
+    outline: none;
+    cursor: default;
+    margin-top: .75rem;
+    margin-bottom: 0;
+    line-height: 1.1rem;
+}
+
+#resetButton{
+    /*display: none;*/
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    width:100%;
+    padding: .75rem;
+    color: #dc4405;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #606060;
+    border: inset #606060;
+    text-align: center;
+    outline: none;
+    margin-top: .75rem;
+}
+
+#resetButton:hover{
+    border: inset #dc4405;
+    background-color: #7a7a7a;
+}
+
+li{
+    list-style-type: none;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+}
+
+table{
+    border-spacing: 2px 5px;
+}
+
+.board{
+    width: 700px;
+    background-color: #b3b3b3;
+    border: #dc4405;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+tr{
+    margin: 2px;
+    border: 5px;
+}
+
+td{
+    width: 175px;
+    height:50px;
+    text-align:center;
+}
+
+.title{
+    display: none;
+}
+
+.cardLocation{
+    background-color: #606060;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 25px;
+    cursor: default;
     transition: all 0.15s ease-in-out;
     -webkit-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
+    border: inset transparent;
 }
 
-.cardDefault {
-    background-color: #F0F0F0;
-}
-
-.cardMovable {
-    background-color: #F0F0F0;
-}
-
-.cardMovable:hover {
-    background-color: #6485D1;
-}
-
-.cardRemovable {
-    background-color: #F0F0F0;
-}
-
-.cardRemovable:hover {
-    background-color: #F7054A;
-}
-
-.cardSelected {
-    background-color: #2DD624;
-}
-
-.cardSelected:hover {
-    background-color: #2DD624;
+.cardLocation.cardRemovable:hover, .cardLocation.cardMovable:hover {
+    border: inset #dc4405;
+    cursor: pointer;
+    background-color: #7a7a7a;
 }
 
 .cardDestination {
-    background-color: #BBCEF2;
+    background-color: #7a7a7a;
+    border: dashed #606060;
+    cursor: pointer;
 }
 
 .cardDestination:hover {
-    background-color: #83A5E6;
+    background-color: #dc4405;
+}
+
+.cardSelected{
+    background-color: #7a7a7a;
+    border: inset #dc4405;
+}
+
+.hidden {
+    display: none;
+}
+
+#beaver-logo{
+    display: block;
+    padding: .75rem;
+    max-width: 125px;
+    margin: auto;
+    margin-top: 0.25rem;
 }
