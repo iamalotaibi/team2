@@ -17,8 +17,6 @@ body{
     padding: 1.5rem;
     text-shadow: 0.05rem 0.05rem .2rem #606060;
     cursor: default;
-    user-select: none;
-
 }
 
 #status-bar{
@@ -30,7 +28,6 @@ body{
     margin-left: 12%;
     text-align: center;
     box-shadow: 0.05rem 0.05rem .2rem #606060;
-    user-select: none;
     cursor: default;
 }
 
@@ -65,7 +62,6 @@ body{
     text-align: center;
     outline: none;
     margin-bottom: 1.5rem;
-    user-select: none;
 }
 
 #score-area{
@@ -78,7 +74,6 @@ body{
     text-align: center;
     border: inset #606060;
     cursor: default;
-    user-select: none;
 }
 
 
@@ -101,7 +96,6 @@ body{
     margin-top: .75rem;
     margin-bottom: 0;
     line-height: 1.1rem;
-    user-select: none;
 }
 
 #resetButton{
@@ -118,7 +112,6 @@ body{
     text-align: center;
     outline: none;
     margin-top: .75rem;
-    user-select: none;
 }
 
 #resetButton:hover{
@@ -169,8 +162,6 @@ td{
     -webkit-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
     border: inset transparent;
-    user-select: none;
-
 }
 
 .cardLocation.cardRemovable:hover, .cardLocation.cardMovable:hover {
@@ -204,21 +195,4 @@ td{
     left: 18px;
     bottom: 50px;
     max-width: 125px;
-    user-select: none;
-}
-
-#resetButton{
-    /*display: none;*/
-    font-family: 'Lobster', cursive;
-    font-size: 40px;
-    width:100%;
-    padding: .75rem;
-    color: #dc4405;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #606060;
-    border: inset #606060;
-    text-align: center;
-    outline: none;
-    margin-top: .75rem;
 }
