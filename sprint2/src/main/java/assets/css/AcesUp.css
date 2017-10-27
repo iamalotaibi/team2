@@ -67,8 +67,8 @@ body{
     background-color: #606060;
     text-align: center;
     border: inset #606060;
-    outline: none;
     cursor: default;
+    user-select: none;
 }
 
 
@@ -91,6 +91,7 @@ body{
     margin-top: .75rem;
     margin-bottom: 0;
     line-height: 1.1rem;
+    user-select: none;
 }
 
 li{
@@ -144,16 +145,19 @@ td{
     background-color: #7a7a7a;
 }
 
-.cardLocation.top.cardMovable:active {
-    border: inset #dc4405;
+.cardDestination {
+    background-color: transparent;
+    border: dashed #606060;
     cursor: pointer;
 }
 
-.cardDestination {
-    background-color: transparent;
-    border: dashed;
-    border-color: #606060;
-    cursor: pointer;
+.cardDestination:hover {
+    background-color: #dc4405;
+}
+
+.cardSelected{
+    background-color: #7a7a7a;
+    border: inset #dc4405;
 }
 
 .hidden {
