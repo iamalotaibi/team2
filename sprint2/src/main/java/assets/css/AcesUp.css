@@ -3,6 +3,7 @@ body{
     color: #dc4405;
     font-family: 'Ubuntu', sans-serif;
     margin: 0;
+    user-select: none;
 }
 
 #site-header{
@@ -15,6 +16,8 @@ body{
     font-size: 65px;
     padding: 1.5rem;
     text-shadow: 0.05rem 0.05rem .2rem #606060;
+    cursor: default;
+    user-select: none;
 
 }
 
@@ -27,6 +30,8 @@ body{
     margin-left: 12%;
     text-align: center;
     box-shadow: 0.05rem 0.05rem .2rem #606060;
+    user-select: none;
+    cursor: default;
 }
 
 #site-sidebar{
@@ -60,6 +65,7 @@ body{
     text-align: center;
     outline: none;
     margin-bottom: 1.5rem;
+    user-select: none;
 }
 
 #score-area{
@@ -112,6 +118,7 @@ body{
     text-align: center;
     outline: none;
     margin-top: .75rem;
+    user-select: none;
 }
 
 #resetButton:hover{
@@ -162,6 +169,8 @@ td{
     -webkit-transition: all 0.15s ease-in-out;
     -moz-transition: all 0.15s ease-in-out;
     border: inset transparent;
+    user-select: none;
+
 }
 
 .cardLocation.cardRemovable:hover, .cardLocation.cardMovable:hover {
@@ -195,6 +204,7 @@ td{
     left: 18px;
     bottom: 50px;
     max-width: 125px;
+    user-select: none;
 }
 
 #resetButton{
