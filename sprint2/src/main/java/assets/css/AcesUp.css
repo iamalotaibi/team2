@@ -195,7 +195,9 @@ td{
 }
 
 #beaver-logo{
+    display: block;
     padding: .75rem;
     max-width: 125px;
+    margin: auto;
     margin-top: 0.25rem;
 }
