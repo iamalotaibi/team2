@@ -20,6 +20,8 @@ public class Game {
     public Integer top_card_modes[] = new Integer[4];
     public Integer top_card_rows[] = new Integer[4];
 
+    public Integer score = new Integer(0);
+    public String status = new String("");
 
     public Game(){
         // initialize a new game such that each column can store cards
@@ -71,6 +73,7 @@ public class Game {
     public void remove(int columnNumber) {
         // Remove the top card from the indicated column
         if (columnNumber > 3 || columnNumber < 0 || !(columnHasCards(columnNumber))) {
+
             System.out.println("Cannot remove from Column " + columnNumber );
             return;
         }
@@ -90,6 +93,8 @@ public class Game {
             }
         }
         if (removeCard) {
+            Card rem_card = this.cols.get(columnNumber).get(this.cols.get(columnNumber).size() - 1);
+            this.status = "Removed: " + getCardValueString(rem_card);
             this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
             System.out.println("Removed from Column " + columnNumber );
             int end_state = hasGameBeenWon();
@@ -108,9 +113,8 @@ public class Game {
     }
 
     private Card getTopCard(int columnNumber) {
-        return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
+        return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size() - 1);
     }
-
 
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
@@ -169,6 +173,41 @@ public class Game {
         return true;
     }
 
+    private String getCardValueString(Card current_card) {
+        String str = "";
+        switch (current_card.value) {
+            case 11:
+                str = "J ";
+                break;
+            case 12:
+                str = "Q ";
+                break;
+            case 13:
+                str = "K ";
+                break;
+            case 14:
+                str = "A ";
+                break;
+            default:
+                str = current_card.value + " ";
+                break;
+        }
+        switch (current_card.suit) {
+            case Hearts:
+                str = str + "\u2665";
+                break;
+            case Spades:
+                str = str + "\u2660";
+                break;
+            case Diamonds:
+                str = str + "\u2666";
+                break;
+            case Clubs:
+                str = str + "\u2663";
+                break;
+        }
+        return str;
+    }
 
     // returns 1 if the game has been won,
     //        -1 if the game has been lost,
@@ -178,10 +217,12 @@ public class Game {
         boolean end_state = inEndState();
         // The only way cards_left could equal 4 is if the 4 aces are left
         if (end_state && cards_left == 4) {
+            this.status = "Game over! You win!";
             System.out.println("The game is over!");
             System.out.println("You win!");
             return 1;
         } else if (end_state) {
+            this.status = "Game over! You lose!";
             System.out.println("The game is over!");
             System.out.println("You lose!");
             System.out.println("Score: " + getScore());
@@ -191,9 +232,13 @@ public class Game {
         }
     }
 
-    private int getScore() {
-        int cards_left = this.cols.get(0).size() + this.cols.get(1).size() + this.cols.get(2).size() + this.cols.get(3).size();
-        return (52 - cards_left);
+    public int getScore() {
+        this.score = 52 - (this.cols.get(0).size() +
+                this.cols.get(1).size() +
+                this.cols.get(2).size() +
+                this.cols.get(3).size() +
+                this.deck.size());
+        return this.score;
     }
 
     public boolean isCardRemovable(int column) {

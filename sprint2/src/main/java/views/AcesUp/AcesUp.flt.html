@@ -1,5 +1,7 @@
 <link href="/assets/css/AcesUp.css" rel="stylesheet">
-<link href="/assets/css/custom.css" rel="stylesheet">
+<!--<link href="/assets/css/custom.css" rel="stylesheet">-->
+<link href="https://fonts.googleapis.com/css?family=Lobster|Ubuntu" rel="stylesheet">
+
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
 <body>
@@ -8,7 +10,7 @@
     <div id="status-bar">
         <div id="status-text">
             <span id="poster">Status:</span>
-            <span id="notifier">(ALERT) You Can't Move X Card to Y Colmn</span>
+            <span id="notifier"> </span>
         </div>
     </div>
 </div>
@@ -18,36 +20,27 @@
             <div id="deal-btn">
                 <button id="dealButton">Deal</button>
             </div>
-            <BR>
-            <div id="remove-area">
-                <span>Remove:</span>
-                <div id="remove-btns">
-                    <button id="Remove0">0</button><button id="Remove1">1</button><button id="Remove2">2</button><button id="Remove3">3</button>
-                </div>
-            </div>
-            <div id="move-area">
-                <span>Move(From):</span>
-                <div class="move-btns">
-                    <input type="text" id="from_col"  />
-                </div>
-                <span>Move(To):</span>
-                <div class="move-btns">
-                    <input type="text" id="to_col"  />
-                </div>
-                <button id="moveButton">Move</button>
-            </div>
             <div id="score-area">
-
+                <span id="score">Score: 48</span>
+            </div>
+            <img id=beaver-logo src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Oregon_State_Beavers_logo.svg/400px-Oregon_State_Beavers_logo.svg.png">
+            <ul id="text-area">
+                <li>
+                    Hover over a card to see if it can be changed!
+                </li>
+                <li>
+                    Removable cards will disappear when clicked!
+                </li>
+                <li>
+                    To move a card to an empty column, click the card and then click the empty column!
+                </li>
+            </ul>
+            <div id="reset-btn">
+                <button id="resetButton">Reset</button>
             </div>
         </div>
         <div id="site-game">
           <table>
-              <tr class="title">
-                  <td>Column0</td>
-                  <td>Column1</td>
-                  <td>Column2</td>
-                  <td>Column3</td>
-              </tr>
               <tr>
                   <td class="columnOfCards" id="c0">
                       <table>
@@ -150,19 +143,19 @@ function display(game) {
                 card.value = card.value + " ";
                 break;
             case 11:
-                card.value = " J ";
+                card.value = "J ";
                 break;
             case 12:
-                card.value = " Q ";
+                card.value = "Q ";
                 break;
             case 13:
-                card.value = " K ";
+                card.value = "K ";
                 break;
             case 14:
-                card.value = " A ";
+                card.value = "A ";
                 break;
             default:
-                card.value = " " + card.value + " ";
+                card.value = card.value + " ";
                 break;
         }
 
@@ -219,6 +212,9 @@ function display(game) {
             $( '#c' + i + ' .l' + game.top_card_rows[i]).removeClass("cardDefault").addClass(card_modes_class_map[game.top_card_modes[i]]);
         }
     }
+
+    $( '#score' ).html("Score: "+game.score);
+    $( '#notifier' ).html(game.status);
 }
 
 $(".cardLocation").click(function() {
