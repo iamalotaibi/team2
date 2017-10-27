@@ -94,6 +94,27 @@ body{
     user-select: none;
 }
 
+#resetButton{
+    /*display: none;*/
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    width:100%;
+    padding: .75rem;
+    color: #dc4405;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #606060;
+    border: inset #606060;
+    text-align: center;
+    outline: none;
+    margin-top: .75rem;
+}
+
+#resetButton:hover{
+    border: inset #dc4405;
+    background-color: #7a7a7a;
+}
+
 li{
     list-style-type: none;
     padding-bottom: .5rem;
@@ -170,4 +191,20 @@ td{
     left: 18px;
     bottom: 50px;
     max-width: 125px;
+}
+
+#resetButton{
+    /*display: none;*/
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    width:100%;
+    padding: .75rem;
+    color: #dc4405;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #606060;
+    border: inset #606060;
+    text-align: center;
+    outline: none;
+    margin-top: .75rem;
 }
