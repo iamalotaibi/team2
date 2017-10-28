@@ -94,7 +94,7 @@ public class Game {
         }
         if (removeCard) {
             Card rem_card = this.cols.get(columnNumber).get(this.cols.get(columnNumber).size() - 1);
-            this.status = "Removed: " + getCardValueString(rem_card);
+            this.status = getCardValueString(rem_card) + " (Removed)";
             this.cols.get(columnNumber).remove(this.cols.get(columnNumber).size() - 1);
             System.out.println("Removed from Column " + columnNumber );
             int end_state = hasGameBeenWon();
