@@ -54,6 +54,7 @@ public class ApplicationController {
         g.remove(colNumber);
         g.clearCardSelection();
         g.updateTopCardModes();
+        g.getScore();
         return Results.json().render(g);
     }
 
@@ -64,7 +65,7 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
-    public Result cardClicked(Context context, @PathParam("column") int column, @PathParam("row") int row, Game g){
+    public Result cardClicked(Context context, @PathParam("column") int column, @PathParam("row") int row, Game g) {
         g.processCardSelection(column, row);
         g.updateTopCardModes();
         return Results.json().render(g);
