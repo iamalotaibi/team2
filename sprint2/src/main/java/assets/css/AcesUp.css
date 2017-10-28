@@ -150,7 +150,7 @@ tr{
 }
 
 td{
-    width: 175px;
+    width: 135px;
     height:50px;
     text-align:center;
 }
@@ -163,7 +163,7 @@ td{
     background-color: #606060;
     border-radius: 5px;
     padding: 5px;
-    font-size: 28px;
+    font-size: 26px;
     cursor: default;
     transition: all 0.15s ease-in-out;
     -webkit-transition: all 0.15s ease-in-out;
