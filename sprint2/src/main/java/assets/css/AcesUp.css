@@ -1,3 +1,4 @@
+
 body{
     background-color: #363636;
     color: #dc4405;
@@ -26,12 +27,13 @@ body{
 
 #status-bar{
     display: inline-block;
+    min-width: 400px;
     font-size: 20px;
     background-color: #606060;
     border-radius: 5px;
     padding: .75rem;
     margin-left: 12%;
-    text-align: center;
+    text-align: left;
     box-shadow: 0.05rem 0.05rem .2rem #606060;
     cursor: default;
 }
@@ -148,7 +150,7 @@ tr{
 }
 
 td{
-    width: 175px;
+    width: 135px;
     height:50px;
     text-align:center;
 }
@@ -161,7 +163,7 @@ td{
     background-color: #606060;
     border-radius: 5px;
     padding: 5px;
-    font-size: 25px;
+    font-size: 26px;
     cursor: default;
     transition: all 0.15s ease-in-out;
     -webkit-transition: all 0.15s ease-in-out;

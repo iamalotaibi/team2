@@ -10,7 +10,7 @@
     <div id="status-bar">
         <div id="status-text">
             <span id="poster">Status:</span>
-            <span id="notifier">(ALERT) You Can't Move X Card to Y Colmn</span>
+            <span id="notifier"> </span>
         </div>
     </div>
 </div>
@@ -35,7 +35,7 @@
                 </li>
             </ul>
             <div id="reset-btn">
-                <button id="resetButton">Reset</button>
+                <button id="resetButton" onclick="history.go(0)">Reset</button>
             </div>
             <div id="beaver-logo-area">
                 <img id=beaver-logo src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1b/Oregon_State_Beavers_logo.svg/400px-Oregon_State_Beavers_logo.svg.png">
@@ -134,26 +134,73 @@ var card_modes_class_map = [
     "cardDestination"
 ];
 
-
 function display(game) {
     console.log(game);
-
     $( '.columnOfCards .cardLocation' ).html("");
+    var card;
+
+    function processCard() {
+        switch(card.value) {
+            case 10:
+                card.value = card.value + " ";
+                break;
+            case 11:
+                card.value = "J ";
+                break;
+            case 12:
+                card.value = "Q ";
+                break;
+            case 13:
+                card.value = "K ";
+                break;
+            case 14:
+                card.value = "A ";
+                break;
+            default:
+                card.value = card.value + " ";
+                break;
+        }
+
+        switch(card.suit) {
+            case "Hearts":
+                card.suit = "<span class=\"red_card\">\u2665</span>";
+                break;
+            case "Spades":
+                card.suit = "\u2660";
+                break;
+            case "Diamonds":
+                card.suit = "<span class=\"red_card\">\u2666</span>";
+                break;
+            case "Clubs":
+                card.suit = "\u2663";
+                break;
+        }
+    }
 
     $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).html(val.value + val.suit);
+        card = {value : val.value, suit : val.suit};
+        processCard();
+
+        $( '#c0 .l'+key ).html(card.value + card.suit);
     });
 
     $.each(game.cols[1], function( key, val ) {
-        $( '#c1 .l'+key ).html(val.value + val.suit);
+        card = {value : val.value, suit : val.suit};
+        processCard();
+
+        $( '#c1 .l'+key ).html(card.value + card.suit);
     });
 
     $.each(game.cols[2], function( key, val ) {
-        $( '#c2 .l'+key ).html(val.value + val.suit);
+        card = {value : val.value, suit : val.suit};
+        processCard();
+        $( '#c2 .l'+key ).html(card.value + card.suit);
     });
 
     $.each(game.cols[3], function( key, val ) {
-        $( '#c3 .l'+key ).html(val.value + val.suit);
+        card = {value : val.value, suit : val.suit};
+        processCard();
+        $( '#c3 .l'+key ).html(card.value + card.suit);
     });
 
     // Reset CSS classes
@@ -167,6 +214,9 @@ function display(game) {
             $( '#c' + i + ' .l' + game.top_card_rows[i]).removeClass("cardDefault").addClass(card_modes_class_map[game.top_card_modes[i]]);
         }
     }
+
+    $( '#score' ).html("Score: "+game.score);
+    $( '#notifier' ).html(game.status);
 }
 
 $(".cardLocation").click(function() {
