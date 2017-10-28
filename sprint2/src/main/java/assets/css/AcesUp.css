@@ -10,6 +10,7 @@ body{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    min-width: 780px;
 }
 
 #site-header{
@@ -36,6 +37,7 @@ body{
     text-align: left;
     box-shadow: 0.05rem 0.05rem .2rem #606060;
     cursor: default;
+    cursor: default;
 }
 
 #site-sidebar{
@@ -54,7 +56,10 @@ body{
     border-radius: 5px;
     padding: 2px;
     float: left;
-    box-shadow: 0.1rem 0.1rem .5rem 2px #606060;}
+    box-shadow: 0.1rem 0.1rem .5rem 2px #606060;
+   max-width: 75%;
+   min-width: 630px;
+}
 
 #dealButton{
     font-family: 'Lobster', cursive;
@@ -126,6 +131,10 @@ body{
     background-color: #7a7a7a;
 }
 
+#resetButton a{
+    color: #dc4405;
+}
+
 li{
     list-style-type: none;
     padding-bottom: .5rem;
@@ -133,7 +142,7 @@ li{
 }
 
 table{
-    border-spacing: 2px 5px;
+    border-spacing: 5px 5px;
 }
 
 .board{
@@ -150,8 +159,8 @@ tr{
 }
 
 td{
-    width: 135px;
-    height:50px;
+    width: 180px;
+    height: 55px;
     text-align:center;
 }
 
@@ -162,8 +171,7 @@ td{
 .cardLocation{
     background-color: #606060;
     border-radius: 5px;
-    padding: 5px;
-    font-size: 26px;
+    font-size: 28px;
     cursor: default;
     transition: all 0.15s ease-in-out;
     -webkit-transition: all 0.15s ease-in-out;
@@ -171,7 +179,19 @@ td{
     border: inset transparent;
 }
 
-.cardLocation.cardRemovable:hover, .cardLocation.cardMovable:hover {
+.cardDefault {
+
+}
+
+.cardRemovable{
+    background-color: #616060;
+}
+
+.cardRemovable{
+    background-color: #616061;
+}
+
+.cardRemovable:hover, .cardMovable:hover {
     border: inset #dc4405;
     cursor: pointer;
     background-color: #7a7a7a;

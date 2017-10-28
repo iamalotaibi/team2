@@ -5,6 +5,7 @@ body{
 padding:0;
 margin: 0;
 background-color: #F0F0F0;
+min-width: 50%;
 }
 #site-header{
 display:block;
