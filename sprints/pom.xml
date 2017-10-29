@@ -84,6 +84,13 @@
                 <groupId>org.ninjaframework</groupId>
                 <artifactId>ninja-maven-plugin</artifactId>
                 <version>${ninja.version}</version>
+								<configuration>
+					        <useDefaultExcludes>true</useDefaultExcludes>
+					        <excludes>
+					            <exclude>(.*)png$</exclude>
+					        </excludes>
+					        <context></context>
+					    </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
