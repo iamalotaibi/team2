@@ -4,14 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <artifactId>Sprint2</artifactId>
+    <artifactId>AceUp</artifactId>
     <!-- If you want to deploy to a war please -->
     <!-- replace "jar" with "war" and -->
     <!-- comment ninja-standalone dependency and  -->
     <!-- uncomment the dependency for ninja-servlet -->
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <groupId>cs361</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1</version>
+    <name>AceUp</name>
 
     <url>http://www.ninjaframework.org</url>
 
@@ -21,6 +22,7 @@
     </properties>
 
     <build>
+      <finalName>AceUp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
