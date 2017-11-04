@@ -122,6 +122,8 @@ public class Game {
             System.out.println("You can't, (" + columnFrom + ") is empty.");
         else if (columnHasCards(columnTo) == true)
             System.out.println("You can't, no empty space in column (" + columnTo + ").");
+        else if (getTopCard(columnFrom).value  != 14)
+            System.out.println("You can't, the top card isn't an Ace");
         else {
             this.addCardToCol(columnTo, getTopCard(columnFrom));
             this.removeCardFromCol(columnFrom);
@@ -259,7 +261,7 @@ public class Game {
 
     public boolean isCardMovable(int column) {
         // Validate
-        if (column < 0 || column > 3 || !columnHasCards(column))
+        if (column < 0 || column > 3 || !columnHasCards(column) || getTopCard(column).value != 14)
             return false;
         // Test if card can be moved
         for (int i = 0; i < 4; ++i) {
