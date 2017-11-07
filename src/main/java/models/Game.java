@@ -15,11 +15,6 @@ public class Game {
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
-    public Boolean card_selected = false;
-    public Integer card_selected_rc[] = new Integer[2];
-    public Integer top_card_modes[] = new Integer[4];
-    public Integer top_card_rows[] = new Integer[4];
-
     public Integer score = new Integer(0);
     public String status = new String("");
 
@@ -27,8 +22,6 @@ public class Game {
         // initialize a new game such that each column can store cards
         for (int i = 0; i < 4; ++i) {
             this.cols.add(new ArrayList<Card>(13));
-            this.top_card_modes[i] = 0;
-            this.top_card_rows[i] = 0;
         }
     }
 
@@ -243,14 +236,21 @@ public class Game {
         return this.score;
     }
 
+    public boolean isColumnEmpty(int column) {
+        if (this.cols.get(column).size() == 0)
+            return true;
+        else
+            return false;
+    }
+
     public boolean isCardRemovable(int column) {
         // Validate
-        if (column < 0 || column > 3 || !columnHasCards(column))
+        if (column < 0 || column > 3 || isColumnEmpty(column))
             return false;
         // Test if card can be removed
         Card c = getTopCard(column);
         for (int i = 0; i < 4; ++i) {
-            if (i != column && columnHasCards(i)) {
+            if (i != column && !isColumnEmpty(i)) {
                 Card compare = getTopCard(i);
                 if (compare.getSuit() == c.getSuit() && compare.getValue() > c.getValue())
                     return true;
@@ -261,122 +261,13 @@ public class Game {
 
     public boolean isCardMovable(int column) {
         // Validate
-        if (column < 0 || column > 3 || !columnHasCards(column) || getTopCard(column).value != 14)
+        if (column < 0 || column > 3 || isColumnEmpty(column) || getTopCard(column).value != 14)
             return false;
         // Test if card can be moved
         for (int i = 0; i < 4; ++i) {
-            if (i != column && !columnHasCards(i))
+            if (i != column && isColumnEmpty(i))
                 return true;
         }
         return false;
-    }
-
-    // This is triggered whenever user selects a card.
-    // Returns
-    //  * 0 if selection is invalid.
-    //  * 1 if a card is removed.
-    //  * 2 if a card is selected.
-    //  * 3 if originally selected card is moved to another location.
-    public int processCardSelection(int col, int row) {
-        // Validate col
-        if (col < 0 || col > 3) {
-            this.card_selected = false;
-            System.out.println("Selected column invalid!");
-            return 0;
-        }
-        // Obtain top empty row at a column
-        int top_empty_row = this.cols.get(col).size();
-        // Validate row
-        if (row < top_empty_row - 1 || row > top_empty_row) {
-            this.card_selected = false;
-            System.out.println("Selected row invalid!");
-            return 0;
-        }
-        // Validate selected card (just in case)
-        if (this.card_selected && (this.card_selected_rc[1] != this.cols.get(this.card_selected_rc[0]).size() - 1 || !isCardMovable(this.card_selected_rc[0]))) {
-            this.card_selected = false;
-            System.out.println("Original selection determined invalid and cleared!");
-        }
-
-        // Performing selection
-        // If a card is already selected,
-        //   - the selected card could be moved to a new location
-        //   - a different selection could be made
-        // If there is no selection yet,
-        //  - selection could be made
-        // When a selection is made,
-        //  - if the location contains a card
-        //      - if the card can be removed, it will be removed
-        //      - if the card can be moved, it will be selected
-        //  - if the location is empty/invalid
-        //      - current selection is cleared
-
-        // Move card if selection is valid
-        System.out.println("Card selected: " + String.valueOf(this.card_selected));
-        if (this.card_selected && col != this.card_selected_rc[0] && !columnHasCards(col) && row == 0) {
-            move(this.card_selected_rc[0], col);
-            this.card_selected = false;
-            System.out.println("Selected card moved!");
-            return 3;
-        }
-        // Otherwise perform a new selection if valid
-        else if (row == top_empty_row - 1) {
-            if (isCardRemovable(col)) {
-                remove(col);
-                this.card_selected = false;
-                System.out.println("Card at location removed!");
-                return 1;
-            }
-            else if (isCardMovable(col)) {
-                this.card_selected_rc[0] = col;
-                this.card_selected_rc[1] = row;
-                this.card_selected = true;
-                System.out.println("Card at location selected!");
-                return 2;
-            }
-        }
-        // If all fails, clear selection
-        this.card_selected = false;
-        System.out.println("Selection cleared/invalid!");
-        return 0;
-    }
-
-    // Call this every time dealing, moving, or removing.
-    public void clearCardSelection() {
-        this.card_selected = false;
-    }
-
-    // Call this every time dealing, moving, or removing.
-    public void updateTopCardModes() {
-        // Modes: 0 - default; 1 - movable; 2 - removable; 3 - selected; 4 - destination
-        if (this.card_selected) {
-            this.top_card_modes[this.card_selected_rc[0]] = 3;
-            for (int i = 0; i < 4; ++i) {
-                this.top_card_rows[i] = this.cols.get(i).size() - 1;
-                if (i != this.card_selected_rc[0]) {
-                    if (this.top_card_rows[i] == -1) {
-                        this.top_card_modes[i] = 4;
-                        this.top_card_rows[i] = 0;
-                    }
-                    else if (this.isCardRemovable(i))
-                        this.top_card_modes[i] = 2;
-                    else if (this.isCardMovable(i))
-                        this.top_card_modes[i] = 1;
-                    else
-                        this.top_card_modes[i] = 0;
-                }
-            }
-        }
-        else {
-            for (int i = 0; i < 4; ++i) {
-                this.top_card_rows[i] = this.cols.get(i).size() - 1;
-                if (this.isCardRemovable(i))
-                    this.top_card_modes[i] = 2;
-                else if (this.isCardMovable(i))
-                    this.top_card_modes[i] = 1;
-                else
-                    this.top_card_modes[i] = 0;
-            }
-        }
     }
 }

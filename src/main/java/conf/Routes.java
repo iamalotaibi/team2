@@ -32,10 +32,8 @@ public class Routes implements ApplicationRoutes {
 
         router.GET().route("/").with(ApplicationController.class, "index");
 
-        router.GET().route("/game").with(ApplicationController.class, "gameGet");
-        router.POST().route("/dealGame").with(ApplicationController.class, "dealPost");
-        router.POST().route("/moveCard/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCard");
-        router.POST().route("/removeCard/{column}").with(ApplicationController.class, "removeCard");
+        router.GET().route("/initGame").with(ApplicationController.class, "initGame");
+        router.POST().route("/dealClicked").with(ApplicationController.class, "dealClicked");
         router.POST().route("/cardClicked/{column}/{row}").with(ApplicationController.class, "cardClicked");
 
         ///////////////////////////////////////////////////////////////////////
@@ -47,7 +45,7 @@ public class Routes implements ApplicationRoutes {
         ///////////////////////////////////////////////////////////////////////
         // Index / Catchall shows index page
         ///////////////////////////////////////////////////////////////////////
-//        router.GET().route("/.*").with(ApplicationController.class, "index");
+        //router.GET().route("/.*").with(ApplicationController.class, "index");
     }
 
 }
