@@ -151,12 +151,12 @@ table{
     padding: 2px;
 }
 
-tr{
+tr {
     margin: 2px;
     border: 5px;
 }
 
-td{
+td {
     width: 180px;
     height: 55px;
     text-align:center;
@@ -166,10 +166,9 @@ td{
     display: none;
 }
 
-.cardLocation{
-    background-color: #606060;
+.cardLocation {
     border-radius: 5px;
-    font-size: 28px;
+    font-size: 36px;
     cursor: default;
     transition: all 0.15s ease-in-out;
     -webkit-transition: all 0.15s ease-in-out;
@@ -178,20 +177,21 @@ td{
 }
 
 .cardDefault {
-
+    background-color: #606060;
 }
 
-.cardRemovable{
-    background-color: #616060;
+.cardMovable {
+    background-color: #616161;
+    cursor: pointer;
 }
 
-.cardRemovable{
-    background-color: #616061;
+.cardRemovable {
+    background-color: #626262;
+    cursor: pointer;
 }
 
 .cardRemovable:hover, .cardMovable:hover {
     border: inset #dc4405;
-    cursor: pointer;
     background-color: #7a7a7a;
 }
 
@@ -205,13 +205,26 @@ td{
     background-color: #dc4405;
 }
 
-.cardSelected{
+.cardSelected {
     background-color: #7a7a7a;
     border: inset #dc4405;
 }
 
 .hidden {
     display: none;
+}
+
+.redCard {
+    color: #ff0000;
+}
+
+.blackCard {
+    color: #111111;
+}
+
+.cardID {
+    color: #222222;
+    font-size: 0.6em;
 }
 
 #beaver-logo{
