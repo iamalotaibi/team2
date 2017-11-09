@@ -11,10 +11,7 @@ public class Game extends Board {
     //   -1 if the game has been lost.
     public int end_state;
 
-    public Game() { }
-
-    public void buildGame() {
-        buildBoard();
+    public Game() {
         end_state = 0;
     }
 
@@ -31,11 +28,11 @@ public class Game extends Board {
             Card rem_card = getTopCard(columnNumber);
             super.remove(columnNumber);
             this.status = rem_card.toString() + " (Removed)";
-            System.out.println("Removed from Column " + columnNumber );
+            System.out.println("Removed from column " + columnNumber );
 
             end_state = hasGameBeenWon();
         } else {
-            System.out.println("Cannot remove from Column " + columnNumber );
+            System.out.println("Cannot remove from column " + columnNumber );
         }
     }
 

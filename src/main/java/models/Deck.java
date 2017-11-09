@@ -6,10 +6,7 @@ public class Deck {
     public java.util.List<Card> deck = new ArrayList<>();
 
     // generates and shuffles deck
-    public Deck() { }
-
-    public void buildDeck() {
-        System.out.println("Building deck");
+    public Deck() {
         deck = new ArrayList<>();
         for(int i = 2; i < 15; i++){
             this.deck.add(new Card(i,Suit.Clubs));
@@ -17,7 +14,6 @@ public class Deck {
             this.deck.add(new Card(i,Suit.Diamonds));
             this.deck.add(new Card(i,Suit.Spades));
         }
-        System.out.println("shuffling deck");
         shuffle();
     }
 
