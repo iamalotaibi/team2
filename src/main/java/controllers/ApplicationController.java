@@ -33,6 +33,7 @@ public class ApplicationController {
 
     public Result initGame() {
         UI ui = new UI();
+        ui.buildUI();
         return Results.json().render(ui);
     }
 

@@ -10,10 +10,13 @@ public class UI {
     public Integer top_card_modes[];
     public Integer top_card_rows[];
 
-    public UI() {
+    public UI() {    }
+
+    public void buildUI() {
+        System.out.println("Building UI");
         this.game = new Game();
-        this.game.buildDeck();
-        this.game.shuffle();
+        game.buildGame();
+        System.out.println("Finished building game");
         this.game.dealFour();
 
         this.card_selected = false;
