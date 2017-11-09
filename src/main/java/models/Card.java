@@ -17,7 +17,6 @@ public class Card implements Serializable {
     public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit) {
         this.value = value;
         this.suit = suit;
-
     }
 
     public Suit getSuit() {
@@ -29,6 +28,38 @@ public class Card implements Serializable {
     }
 
     public String toString() {
-        return this.value + this.suit.toString();
+        String str = "";
+        switch (value) {
+            case 11:
+                str = "J ";
+                break;
+            case 12:
+                str = "Q ";
+                break;
+            case 13:
+                str = "K ";
+                break;
+            case 14:
+                str = "A ";
+                break;
+            default:
+                str = value + " ";
+                break;
+        }
+        switch (suit) {
+            case Hearts:
+                str = str + "\u2665";
+                break;
+            case Spades:
+                str = str + "\u2660";
+                break;
+            case Diamonds:
+                str = str + "\u2666";
+                break;
+            case Clubs:
+                str = str + "\u2663";
+                break;
+        }
+        return str;
     }
 }
