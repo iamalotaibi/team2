@@ -10,13 +10,8 @@ public class UI {
     public Integer top_card_modes[];
     public Integer top_card_rows[];
 
-    public UI() {    }
-
-    public void buildUI() {
-        System.out.println("Building UI");
+    public UI() {
         this.game = new Game();
-        game.buildGame();
-        System.out.println("Finished building game");
         this.game.dealFour();
 
         this.card_selected = false;
@@ -41,7 +36,6 @@ public class UI {
     public void doOnCardClicked(int column, int row) {
         processCardSelection(column, row);
         updateTopCardModes();
-        this.game.getScore();
     }
 
     // This is triggered whenever user selects a card.
@@ -49,7 +43,7 @@ public class UI {
         // Validate col
         if (col < 0 || col > 3) {
             this.card_selected = false;
-            System.out.println("Selected column invalid!");
+            //System.out.println("Selected column invalid!");
             return;
         }
         // Obtain top empty row at a column
@@ -57,13 +51,13 @@ public class UI {
         // Validate row
         if (row < top_empty_row - 1 || row > top_empty_row) {
             this.card_selected = false;
-            System.out.println("Selected row invalid!");
+            //System.out.println("Selected row invalid!");
             return;
         }
         // Validate selected card (just in case)
         if (this.card_selected && (this.card_selected_rc[1] != this.game.cols.get(this.card_selected_rc[0]).size() - 1 || !this.game.isCardMovable(this.card_selected_rc[0]))) {
             this.card_selected = false;
-            System.out.println("Original selection determined invalid and cleared!");
+            //System.out.println("Original selection determined invalid and cleared!");
         }
 
         // Performing selection
@@ -80,11 +74,11 @@ public class UI {
         //      - current selection is cleared
 
         // Move card if selection is valid
-        System.out.println("Card selected: " + String.valueOf(this.card_selected));
+        //System.out.println("Card selected: " + String.valueOf(this.card_selected));
         if (this.card_selected && col != this.card_selected_rc[0] && this.game.isColumnEmpty(col) && row == 0) {
             this.game.move(this.card_selected_rc[0], col);
             this.card_selected = false;
-            System.out.println("Selected card moved!");
+            //System.out.println("Selected card moved!");
             return;
         }
         // Otherwise perform a new selection if valid
@@ -92,20 +86,20 @@ public class UI {
             if (this.game.isCardRemovable(col)) {
                 this.game.remove(col);
                 this.card_selected = false;
-                System.out.println("Card at location removed!");
+                //System.out.println("Card at location removed!");
                 return;
             }
             else if (this.game.isCardMovable(col)) {
                 this.card_selected_rc[0] = col;
                 this.card_selected_rc[1] = row;
                 this.card_selected = true;
-                System.out.println("Card at location selected!");
+                //System.out.println("Card at location selected!");
                 return;
             }
         }
         // If all fails, clear selection
         this.card_selected = false;
-        System.out.println("Selection cleared/invalid!");
+        //System.out.println("Selection cleared/invalid!");
         return;
     }
 

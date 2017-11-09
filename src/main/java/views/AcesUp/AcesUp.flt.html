@@ -231,9 +231,9 @@ $(".cardLocation").click(function() {
         url: "/cardClicked/"+id_data[0]+"/"+id_data[1],
         data: JSON.stringify(ui),
         success: function(data, status) {
-          console.log("Data: " + data + "\nStatus: " + status);
-          ui = data;
-          display(data);
+            console.log("Data: " + data + "\nStatus: " + status);
+            ui = data;
+            display(data);
         },
         contentType:"application/json; charset=utf-8",
         dataType:"json",

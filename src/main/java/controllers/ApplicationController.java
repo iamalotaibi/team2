@@ -27,25 +27,25 @@ import ninja.params.PathParam;
 @Singleton
 public class ApplicationController {
 
+    public UI ui;
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
 
     public Result initGame() {
-        UI ui = new UI();
-        ui.buildUI();
-        return Results.json().render(ui);
+        this.ui = new UI();
+        return Results.json().render(this.ui);
     }
 
-    public Result dealClicked(Context context, UI ui) {
+    public Result dealClicked(Context context) {
         if (context.getRequestPath().contains("deal")) {
-            ui.doOnDeal();
+            this.ui.doOnDeal();
         }
-        return Results.json().render(ui);
+        return Results.json().render(this.ui);
     }
 
-    public Result cardClicked(Context context, @PathParam("column") int column, @PathParam("row") int row, UI ui) {
-        ui.doOnCardClicked(column, row);
-        return Results.json().render(ui);
+    public Result cardClicked(Context context, @PathParam("column") int column, @PathParam("row") int row) {
+        this.ui.doOnCardClicked(column, row);
+        return Results.json().render(this.ui);
     }
 }

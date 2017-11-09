@@ -7,17 +7,14 @@ public class Board {
     public java.util.List<java.util.List<Card>> cols;
     public Deck deck;
 
-    public Board() { }
-
     // initialize board, create and shuffle deck
-    public void buildBoard() {
+    public Board() {
         cols = new ArrayList<>();
         for (int i = 0; i < 4; ++i) {
             this.cols.add(new ArrayList<Card>());
         }
 
         deck = new Deck();
-        deck.buildDeck();
     }
 
     public void dealFour() {
@@ -56,7 +53,7 @@ public class Board {
     // Remove the top card from the indicated column
     protected void remove(int columnNumber) {
         if (columnNumber > 3 || columnNumber < 0 || isColumnEmpty(columnNumber)) {
-            System.out.println("Cannot remove from Column " + columnNumber );
+            System.out.println("Cannot remove from column " + columnNumber );
             if (isColumnEmpty(columnNumber)) {
                 System.out.println("Column (" + columnNumber + ") is empty");
             }
