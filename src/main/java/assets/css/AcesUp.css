@@ -1,279 +1,216 @@
+@media screen and (min-width: 826px) {
+    body {
+        background-color: #363636;
+        color: #dc4405;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 0;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        min-width: 820px;
+    }
 
-body{
-    background-color: #363636;
-    color: #dc4405;
-    font-family: 'Ubuntu', sans-serif;
-    margin: 0;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    min-width: 820px;
-}
+    #logo {
+        display: inline-block;
+        font-family: 'Lobster', cursive;
+        font-size: 65px;
+        padding: 1.5rem;
+        text-shadow: 0.05rem 0.05rem .2rem #606060;
+        cursor: default;
+    }
 
-#logo{
-    display: inline-block;
-    font-family: 'Lobster', cursive;
-    font-size: 65px;
-    padding: 1.5rem;
-    text-shadow: 0.05rem 0.05rem .2rem #606060;
-    cursor: default;
-}
+    #status-bar {
+        display: inline-block;
+        width: 45%;
+        max-width: 600px;
+        font-size: 20px;
+        background-color: #606060;
+        border-radius: 5px;
+        padding: .75rem;
+        margin-left: 12%;
+        text-align: left;
+        box-shadow: 0.05rem 0.05rem .2rem #606060;
+        cursor: default;
+        min-width: 144px;
+    }
 
-#status-bar{
-    display: inline-block;
-    width:45%;
-    max-width: 600px;
-    font-size: 20px;
-    background-color: #606060;
-    border-radius: 5px;
-    padding: .75rem;
-    margin-left: 12%;
-    text-align: left;
-    box-shadow: 0.05rem 0.05rem .2rem #606060;
-    cursor: default;
-    cursor: default;
-    min-width: 144px;
-}
+    #site-sidebar {
+        float: left;
+        padding: .75rem;
+        background-color: #b3b3b3;
+        border-radius: 5px;
+        max-width: 15%;
+        margin-right: 10px;
+        margin-left: 10px;
+        box-shadow: 0.1rem 0.1rem .5rem 2px #606060;
+    }
 
-#site-sidebar{
-    float: left;
-    padding: .75rem;
-    background-color: #b3b3b3;
-    border-radius: 5px;
-    max-width: 15%;
-    margin-right: 10px;
-    margin-left: 10px;
-    box-shadow: 0.1rem 0.1rem .5rem 2px #606060;
-}
+    #site-game {
+        background-color: #b3b3b3;
+        border-radius: 5px;
+        padding: 2px;
+        float: left;
+        box-shadow: 0.1rem 0.1rem .5rem 2px #606060;
+        max-width: 75%;
+        min-width: 634px;
+    }
 
-#site-game{
-    background-color: #b3b3b3;
-    border-radius: 5px;
-    padding: 2px;
-    float: left;
-    box-shadow: 0.1rem 0.1rem .5rem 2px #606060;
-   max-width: 75%;
-   min-width: 634px;
-}
+    #dealButton {
+        font-family: 'Lobster', cursive;
+        font-size: 50px;
+        width: 100%;
+        padding: .75rem;
+        color: #dc4405;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #606060;
+        border: inset #606060;
+        text-align: center;
+        outline: none;
+        margin-bottom: 1.5rem;
+    }
 
-#dealButton{
-    font-family: 'Lobster', cursive;
-    font-size: 50px;
-    width:100%;
-    padding: .75rem;
-    color: #dc4405;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #606060;
-    border: inset #606060;
-    text-align: center;
-    outline: none;
-    margin-bottom: 1.5rem;
-}
+    #score-area {
+        font-family: 'Lobster', cursive;
+        font-size: 32px;
+        padding: .75rem;
+        color: #dc4405;
+        border-radius: 5px;
+        background-color: #606060;
+        text-align: center;
+        border: inset #606060;
+        cursor: default;
+    }
 
-#score-area{
-    font-family: 'Lobster', cursive;
-    font-size: 32px;
-    padding: .75rem;
-    color: #dc4405;
-    border-radius: 5px;
-    background-color: #606060;
-    text-align: center;
-    border: inset #606060;
-    cursor: default;
-}
+    #dealButton:hover {
+        border: inset #dc4405;
+        background-color: #7a7a7a;
+    }
 
+    #text-area {
+        font-family: 'Ubuntu', sans-serif;
+        font-size: 18px;
+        padding-right: .75rem;
+        padding-left: .75rem;
+        color: #dc4405;
+        border-radius: 5px;
+        background-color: #606060;
+        border: inset #606060;
+        outline: none;
+        cursor: default;
+        margin-top: .75rem;
+        margin-bottom: 0;
+        line-height: 1.1rem;
+    }
 
-#dealButton:hover{
-    border: inset #dc4405;
-    background-color: #7a7a7a;
-}
+    #resetButton {
+        font-family: 'Lobster', cursive;
+        font-size: 40px;
+        width: 100%;
+        padding: .75rem;
+        color: #dc4405;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #606060;
+        border: inset #606060;
+        text-align: center;
+        outline: none;
+        margin-top: .75rem;
+    }
 
-#text-area{
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 18px;
-    padding-right: .75rem;
-    padding-left: .75rem;
-    color: #dc4405;
-    border-radius: 5px;
-    background-color: #606060;
-    border: inset #606060;
-    outline: none;
-    cursor: default;
-    margin-top: .75rem;
-    margin-bottom: 0;
-    line-height: 1.1rem;
-}
+    #resetButton:hover {
+        border: inset #dc4405;
+        background-color: #7a7a7a;
+    }
 
-#resetButton{
-    /*display: none;*/
-    font-family: 'Lobster', cursive;
-    font-size: 40px;
-    width:100%;
-    padding: .75rem;
-    color: #dc4405;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #606060;
-    border: inset #606060;
-    text-align: center;
-    outline: none;
-    margin-top: .75rem;
-}
+    #resetButton a {
+        color: #dc4405;
+    }
 
-#resetButton:hover{
-    border: inset #dc4405;
-    background-color: #7a7a7a;
-}
+    li {
+        list-style-type: none;
+        padding-bottom: .5rem;
+        padding-top: .5rem;
+    }
 
-#resetButton a{
-    color: #dc4405;
-}
+    table {
+        border-spacing: 5px 5px;
+    }
 
-li{
-    list-style-type: none;
-    padding-bottom: .5rem;
-    padding-top: .5rem;
-}
+    tr {
+        margin: 2px;
+        border: 5px;
+    }
 
-table{
-    border-spacing: 5px 5px;
-}
+    td {
+        width: 180px;
+        height: 55px;
+        text-align: center;
+    }
 
-.board{
-    width: 700px;
-    background-color: #b3b3b3;
-    border: #dc4405;
-    border-radius: 5px;
-    padding: 2px;
-}
+    .title {
+        display: none;
+    }
 
-tr{
-    margin: 2px;
-    border: 5px;
-}
+    .cardLocation {
+        background-color: #606060;
+        border-radius: 5px;
+        font-size: 28px;
+        cursor: default;
+        transition: all 0.15s ease-in-out;
+        -webkit-transition: all 0.15s ease-in-out;
+        -moz-transition: all 0.15s ease-in-out;
+        border: inset transparent;
+    }
 
-td{
-    width: 180px;
-    height: 55px;
-    text-align:center;
-}
+    .cardDefault {
 
-.title{
-    display: none;
-}
+    }
 
-.cardLocation{
-    background-color: #606060;
-    border-radius: 5px;
-    font-size: 28px;
-    cursor: default;
-    transition: all 0.15s ease-in-out;
-    -webkit-transition: all 0.15s ease-in-out;
-    -moz-transition: all 0.15s ease-in-out;
-    border: inset transparent;
-}
+    .cardRemovable {
+        background-color: #616060;
+    }
 
-.cardDefault {
+    .cardRemovable {
+        background-color: #616061;
+    }
 
-}
+    .cardRemovable:hover, .cardMovable:hover {
+        border: inset #dc4405;
+        cursor: pointer;
+        background-color: #7a7a7a;
+    }
 
-.cardRemovable{
-    background-color: #616060;
-}
+    .cardDestination {
+        background-color: #7a7a7a;
+        border: dashed #606060;
+        cursor: pointer;
+    }
 
-.cardRemovable{
-    background-color: #616061;
-}
+    .cardDestination:hover {
+        background-color: #dc4405;
+    }
 
-.cardRemovable:hover, .cardMovable:hover {
-    border: inset #dc4405;
-    cursor: pointer;
-    background-color: #7a7a7a;
-}
+    .cardSelected {
+        background-color: #7a7a7a;
+        border: inset #dc4405;
+    }
 
-.cardDestination {
-    background-color: #7a7a7a;
-    border: dashed #606060;
-    cursor: pointer;
-}
+    .hidden {
+        display: none;
+    }
 
-.cardDestination:hover {
-    background-color: #dc4405;
-}
+    #beaver-logo {
+        display: block;
+        padding: .75rem;
+        max-width: 125px;
+        margin: auto;
+        margin-top: 0.25rem;
+    }
 
-.cardSelected{
-    background-color: #7a7a7a;
-    border: inset #dc4405;
-}
-
-.hidden {
-    display: none;
-}
-
-#beaver-logo{
-    display: block;
-    padding: .75rem;
-    max-width: 125px;
-    margin: auto;
-    margin-top: 0.25rem;
-}
-@media screen and (max-width: 825px){
-body{
-min-width: 250px;
-}
-#logo {
-display: none;
-  position: absolute;
-  font-size: 100%;
-  top: 0;
-  width: 100%;
-  height: 20px;
-  text-align: center;
-}
-#status-bar {
-  display: none;
-}
-#site-sidebar {
-  float: left;
-  width: 92.5%;
-  max-width: 92.5%;
-  min-width: 100px;
-  vertical-align: top;
-  display:inline-block;
-  margin: 0;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-}
-#site-game {
-  float: left;
-  width: 95%;
-  max-width: 95%;
-  min-width: 100px;
-  vertical-align: top;
-  display:inline-block;
-  margin: 0;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-td {
-   max-width:100%;
-   width 100%;
-}
-#score-area{
-    display:none;
-}
-#text-area{
-    display:none;
-}
-#reset-btn{
-    display:none;
-}
-#beaver-logo-area{
-    display:none;
-}
+    .l13 {
+        display: none;
+    }
 }
