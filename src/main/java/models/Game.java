@@ -43,7 +43,7 @@ public class Game extends Board {
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
         if (isCardMovable(columnFrom)) {
-            move(columnFrom, columnTo);
+            super.move(columnFrom, columnTo);
             System.out.println("Moved: from (" + columnFrom + "), to (" + columnTo + ").");
         }
 
