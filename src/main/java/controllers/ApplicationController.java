@@ -39,9 +39,6 @@ public class ApplicationController {
 
     public Result dealClicked(Context context, UI ui) {
         if (context.getRequestPath().contains("deal")) {
-            System.out.println("DEAL BUTTON HIT");
-            System.out.println(ui.game.cols.size());
-            System.out.println(ui.game.deck.size());
             ui.doOnDeal();
         }
         return Results.json().render(ui);

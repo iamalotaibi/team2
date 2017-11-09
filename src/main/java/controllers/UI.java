@@ -33,9 +33,6 @@ public class UI {
     }
 
     public void doOnDeal() {
-        System.out.println("Entered doOnDeal");
-        System.out.println(game.cols.size());
-        System.out.println(game.deck.size());
         this.game.dealFour();
         clearCardSelection();
         updateTopCardModes();

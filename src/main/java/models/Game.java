@@ -1,45 +1,46 @@
 package models;
 
-import models.Deck;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
-
-
-/**
- * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
- */
 public class Game extends Board {
 
     public Integer score = new Integer(0);
     public String status = new String("");
 
+    // Stores the state of the game
+    //    0 if moves can still be made,
+    //    1 if the game has been won,
+    //   -1 if the game has been lost.
+    public int end_state;
+
     public Game() { }
 
     public void buildGame() {
         buildBoard();
+        end_state = 0;
     }
 
     public void dealFour() {
         super.dealFour();
-        int end_state = hasGameBeenWon();
+        end_state = hasGameBeenWon();
     }
 
+    // checks if card at columnNumber can be removed according to game rules
+    // if it can, call super.remove(columnNumber)
     public void remove(int columnNumber) {
         // Remove the top card from the indicated column
         if (isCardRemovable(columnNumber)) {
             Card rem_card = getTopCard(columnNumber);
             super.remove(columnNumber);
-            this.status = getCardValueString(rem_card) + " (Removed)";
+            this.status = rem_card.toString() + " (Removed)";
             System.out.println("Removed from Column " + columnNumber );
-            int end_state = hasGameBeenWon();
+
+            end_state = hasGameBeenWon();
         } else {
             System.out.println("Cannot remove from Column " + columnNumber );
         }
     }
 
+    // checks if card at columnNumber can be moved according to game rules
+    // if it can, call super.move(columnFrom, columnTo)
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
         if (isCardMovable(columnFrom)) {
@@ -47,7 +48,7 @@ public class Game extends Board {
             System.out.println("Moved: from (" + columnFrom + "), to (" + columnTo + ").");
         }
 
-        int end_state = hasGameBeenWon();
+        end_state = hasGameBeenWon();
     }
 
     // returns true if there are no cards left if the deck,
@@ -66,42 +67,6 @@ public class Game extends Board {
         // if cards can't be moved or removed,
         // then the game is in an end state
         return true;
-    }
-
-    private String getCardValueString(Card current_card) {
-        String str = "";
-        switch (current_card.value) {
-            case 11:
-                str = "J ";
-                break;
-            case 12:
-                str = "Q ";
-                break;
-            case 13:
-                str = "K ";
-                break;
-            case 14:
-                str = "A ";
-                break;
-            default:
-                str = current_card.value + " ";
-                break;
-        }
-        switch (current_card.suit) {
-            case Hearts:
-                str = str + "\u2665";
-                break;
-            case Spades:
-                str = str + "\u2660";
-                break;
-            case Diamonds:
-                str = str + "\u2666";
-                break;
-            case Clubs:
-                str = str + "\u2663";
-                break;
-        }
-        return str;
     }
 
     // returns 1 if the game has been won,
@@ -136,13 +101,7 @@ public class Game extends Board {
         return this.score;
     }
 
-    public boolean isColumnEmpty(int column) {
-        if (this.cols.get(column).size() == 0)
-            return true;
-        else
-            return false;
-    }
-
+    // returns true if card at column can be removed
     public boolean isCardRemovable(int column) {
         // Validate
         if (column < 0 || column > 3 || isColumnEmpty(column))
@@ -159,6 +118,7 @@ public class Game extends Board {
         return false;
     }
 
+    // returns true if card at column can be moved
     public boolean isCardMovable(int column) {
         // Validate
         if (column < 0 || column > 3 || isColumnEmpty(column) || getTopCard(column).value != 14)
