@@ -1,0 +1,293 @@
+/* Mobile Stylesheet*/
+
+@media screen and (max-width: 825px){
+    body{
+        background-color: #363636;
+        color: #dc4405;
+        font-family: 'Ubuntu', sans-serif;
+        margin: 0;
+        align-content: flex-end;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    #site-header{
+        margin: 0 auto;
+        text-align: center;
+        display: flex;
+        display: -webkit-flex;
+        width: 100%;
+        height: 1px;
+    }
+
+    #logo{
+        display: none;
+        /*display: flex;*/
+        justify-content: center;
+        flex: 100%;
+        text-align: center;
+        font-family: 'Lobster', cursive;
+        font-size: 65px;
+        text-shadow: 0.05rem 0.05rem .2rem #606060;
+        cursor: default;
+        position: fixed;
+        bottom: 5px;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    #status-bar{
+        display: none;
+        width:45%;
+        max-width: 600px;
+        font-size: 20px;
+        background-color: #606060;
+        border-radius: 5px;
+        padding: .75rem;
+        margin-left: 12%;
+        text-align: left;
+        box-shadow: 0.05rem 0.05rem .2rem #606060;
+        cursor: default;
+        min-width: 144px;
+    }
+
+    #site-sidebar{
+        padding: 5px;
+        background-color: #b3b3b3;
+        border-radius: 5px;
+        width: 87%;
+        margin: 5px auto;
+        box-shadow: 0.1rem 0.1rem .5rem 2px #606060;
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+    }
+
+    #site-game{
+        display: flex;
+        display: -webkit-flex;
+        background-color: #b3b3b3;
+        border-radius: 5px;
+        padding: 0px;
+        box-shadow: 0.1rem 0.1rem .5rem 2px #606060;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    #deal-btn{
+        display: flex;
+        display: -webkit-flex;
+        margin: 0 5px;
+        flex: 30%;
+    }
+
+    #dealButton{
+        font-family: 'Lobster', cursive;
+        font-size: 30px;
+        color: #dc4405;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #606060;
+        border: inset #606060;
+        text-align: center;
+        outline: none;
+        width: 100%;
+        text-shadow: 0.05rem 0.05rem .2rem #3b3b3b;
+    }
+
+    #score-area{
+        font-family: 'Lobster', cursive;
+        font-size: 20px;
+        color: #dc4405;
+        border-radius: 5px;
+        background-color: #606060;
+        text-align: center;
+        border: inset #606060;
+        cursor: default;
+        display: flex;
+        display: -webkit-flex;
+        flex: 20%;
+        padding: auto;
+        align-items: center;
+    }
+
+    #score{
+        margin: 0 auto;
+        text-shadow: 0.05rem 0.05rem .2rem #3b3b3b;
+    }
+
+
+    #dealButton:hover{
+        border: inset #dc4405;
+        background-color: #7a7a7a;
+    }
+
+    #text-area{
+        display: none;
+    }
+
+    #reset-btn{
+        display: flex;
+        display: -webkit-flex;
+        flex: 12%;
+        margin: 0 5px;
+    }
+
+    #resetButton{
+        margin: 0 auto;
+        font-family: 'Lobster', cursive;
+        font-size: 20px;
+        width: 100%;
+        color: #dc4405;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #606060;
+        border: inset #606060;
+        text-align: center;
+        outline: none;
+        text-decoration: none;
+        text-shadow: 0.05rem 0.05rem .2rem #3b3b3b;
+    }
+
+    #resetButton:hover{
+        border: inset #dc4405;
+        background-color: #7a7a7a;
+    }
+
+    #resetButton a{
+        color: #dc4405;
+        text-decoration: none;
+    }
+
+    li{
+        list-style-type: none;
+    }
+
+    table{
+        border-spacing: 1px 1px;
+        text-align: center;
+    }
+
+    .gameTable{
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        flex: 100%;
+        width: 100%;
+    }
+
+    tbody{
+        display: table;
+        width: 100%;
+    }
+
+    .columnContainer{
+        display: flex;
+        display: -webkit-flex;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        flex: 100%;
+    }
+
+    .columnOfCards{
+        display: flex;
+        display: -webkit-flex;
+        flex: 20%;
+        padding: 0 1px;
+    }
+
+    .cardLocation{
+        padding: 0;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        background-color: #606060;
+        border-radius: 5px;
+        font-size: 20px;
+        cursor: default;
+        transition: all 0.15s ease-in-out;
+        -webkit-transition: all 0.15s ease-in-out;
+        -moz-transition: all 0.15s ease-in-out;
+        border: inset transparent 2px;
+    }
+
+    .column{
+        display: flex;
+        display: -webkit-flex;
+        flex: 100%;
+        width: 100%;
+    }
+
+    table.column{
+        margin: 0 auto;
+    }
+
+    .cardMovable{
+        background-color: #616060;
+    }
+
+    .cardRemovable{
+        background-color: #616061;
+    }
+
+    .cardRemovable:hover, .cardMovable:hover, .cardRemovable:active, .cardMovable:active{
+        border: inset #dc4405 2px;
+        cursor: pointer;
+        background-color: #7a7a7a;
+    }
+
+    .cardDestination {
+        background-color: #7a7a7a;
+        border: dashed #606060 2px;
+        cursor: pointer;
+    }
+
+    .cardDestination:hover, .cardDestination:active{
+        background-color: #dc4405;
+    }
+
+    .cardSelected{
+        background-color: #7a7a7a;
+        border: inset #dc4405 2px;
+    }
+
+
+    .redCard {
+        color: #dc4405;
+    }
+
+    .blackCard {
+        color: #111111;
+    }
+
+
+    .cardID {
+        color: #222222;
+        font-size: 0.6em;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    #beaver-logo{
+        display: none;
+        position: fixed;
+        bottom: 80px;
+        left: 0;
+        right:  0;
+        z-index: -1;
+        max-width: 125px;
+        margin: 0 auto;
+    }
+}
