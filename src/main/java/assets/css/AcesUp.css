@@ -28,12 +28,13 @@
         font-size: 20px;
         background-color: #606060;
         border-radius: 5px;
-        padding: .75rem;
+        padding: 1rem;
         margin-left: 12%;
         text-align: left;
         box-shadow: 0.05rem 0.05rem .2rem #606060;
         cursor: default;
         min-width: 144px;
+        text-shadow: 0.05rem 0.05rem .2rem #3b3b3b;
     }
 
     #site-sidebar {
@@ -70,6 +71,7 @@
         text-align: center;
         outline: none;
         margin-bottom: 1.5rem;
+        text-shadow: 0.05rem 0.05rem .2rem #363636;
     }
 
     #score-area {
@@ -103,6 +105,7 @@
         margin-top: .75rem;
         margin-bottom: 0;
         line-height: 1.1rem;
+        text-shadow: 0.05rem 0.05rem .2rem #363636;
     }
 
     #resetButton {
@@ -118,6 +121,12 @@
         text-align: center;
         outline: none;
         margin-top: .75rem;
+        text-shadow: 0.05rem 0.05rem .2rem #363636;
+    }
+
+    #resetButton a{
+        color: #dc4405;
+        text-decoration: none;
     }
 
     #resetButton:hover {
@@ -155,9 +164,10 @@
     }
 
     .cardLocation {
+        padding: 0;
         background-color: #606060;
         border-radius: 5px;
-        font-size: 28px;
+        font-size: 32px;
         cursor: default;
         transition: all 0.15s ease-in-out;
         -webkit-transition: all 0.15s ease-in-out;
@@ -166,10 +176,10 @@
     }
 
     .cardDefault {
-
+        background-color: #606060;
     }
 
-    .cardRemovable {
+    .cardMovable {
         background-color: #616060;
     }
 
@@ -202,6 +212,20 @@
         display: none;
     }
 
+    .redCard {
+        color: #dc4405;
+    }
+
+    .blackCard {
+        color: #111111;
+    }
+
+
+     .cardID {
+     color: #222222;
+     font-size: 0.6em;
+    }
+
     #beaver-logo {
         display: block;
         padding: .75rem;
@@ -209,7 +233,4 @@
         margin: auto;
         margin-top: 0.25rem;
     }
-
-    .l13 {
-        display: none;
-    }
+}
