@@ -166,6 +166,10 @@
         text-decoration: none;
     }
 
+    #deck-buttons{
+        display: none;
+    }
+
     li{
         list-style-type: none;
     }

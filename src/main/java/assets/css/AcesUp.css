@@ -137,6 +137,48 @@
         color: #dc4405;
     }
 
+    #acesUpButton{
+        font-family: 'Lobster', cursive;
+        font-size: 20px;
+        width: 100%;
+        padding: .75rem;
+        color: #dc4405;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #606060;
+        border: inset #606060;
+        text-align: center;
+        outline: none;
+        margin-top: .75rem;
+        text-shadow: 0.05rem 0.05rem .2rem #363636;
+    }
+
+    #acesUpButton:hover {
+        border: inset #dc4405;
+        background-color: #7a7a7a;
+    }
+
+    #spanishButton{
+        font-family: 'Lobster', cursive;
+        font-size: 20px;
+        width: 100%;
+        padding: .75rem;
+        color: #dc4405;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: #606060;
+        border: inset #606060;
+        text-align: center;
+        outline: none;
+        margin-top: .75rem;
+        text-shadow: 0.05rem 0.05rem .2rem #363636;
+    }
+
+    #spanishButton:hover {
+        border: inset #dc4405;
+        background-color: #7a7a7a;
+    }
+
     li {
         list-style-type: none;
         padding-bottom: .5rem;
