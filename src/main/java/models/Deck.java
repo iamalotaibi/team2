@@ -2,19 +2,12 @@ package models;
 
 import java.util.ArrayList;
 
-public class Deck {
+abstract class Deck {
     public java.util.List<Card> deck = new ArrayList<>();
 
-    // generates and shuffles deck
+    // initialize empty deck
     public Deck() {
         deck = new ArrayList<>();
-        for(int i = 2; i < 15; i++){
-            this.deck.add(new Card(i,Suit.Clubs));
-            this.deck.add(new Card(i,Suit.Hearts));
-            this.deck.add(new Card(i,Suit.Diamonds));
-            this.deck.add(new Card(i,Suit.Spades));
-        }
-        shuffle();
     }
 
     // return the next card in the deck
@@ -34,7 +27,7 @@ public class Deck {
     }
 
     // shuffles the deck so that it is random
-    private void shuffle() {
+    protected void shuffle() {
         // Create a copy of the original deck
         ArrayList<Card> deck2 = new ArrayList<>(this.deck);
         int deck_size = this.deck.size();

@@ -13,8 +13,7 @@ public class Board {
         for (int i = 0; i < 4; ++i) {
             this.cols.add(new ArrayList<Card>());
         }
-
-        deck = new Deck();
+         deck = new AcesUpDeck();
     }
 
     public void dealFour() {

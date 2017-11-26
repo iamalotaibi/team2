@@ -2,6 +2,7 @@ package models;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -9,56 +10,59 @@ import static org.junit.Assert.*;
 public class testDeck {
 
     @Test
-    public void testGameCreation(){
-        Game g = new Game();
-        assertNotNull(g);
+    public void testBuildDeck(){
+        Deck ad = new AcesUpDeck();
+        assertEquals(52,ad.deck.size());
+
+        Deck sd = new SpanishDeck();
+        assertEquals(50,sd.deck.size());
     }
 
     @Test
-    public void testGameBuildDeck(){
-        Game g = new Game();
-        assertEquals(52,g.deck.cards.size());
+    public void testDeckShuffle(){
+        AcesUpDeck ad1 = new AcesUpDeck();
+        AcesUpDeck ad2 = new AcesUpDeck();
+        // ad1 and ad2 could shuffle to the same order, but that chance is approximately 1 in 8*10^67 shuffles
+        assertFalse(Arrays.equals(ad1.deck.toArray(), ad2.deck.toArray()));
+
+        SpanishDeck sd1 = new SpanishDeck();
+        SpanishDeck sd2 = new SpanishDeck();
+        // ad1 and ad2 could shuffle to the same order, but that chance is approximately 1 in 8*10^67 shuffles
+        assertFalse(Arrays.equals(sd1.deck.toArray(), sd2.deck.toArray()));
     }
 
     @Test
-    public void testGameShuffle(){
-        Game g1 = new Game();
-        g1.deck.shuffle();
-        Game g2 = new Game();
-        g2.deck.shuffle();
-        // g1 and g2 could shuffle to the same order, but that chance is approximately 1 in 8*10^67 shuffles
-        assertFalse(Arrays.equals(g1.deck.cards.toArray(),g2.deck.cards.toArray()));
+    public void testEmptyDeck(){
+        AcesUpDeck ad = new AcesUpDeck();
+        for (int i = 0; i < 52; i++)
+            ad.draw();
+        assertEquals(0,ad.size());
+
+        SpanishDeck sd = new SpanishDeck();
+        for (int i = 0; i < 50; i++)
+            sd.draw();
+        assertEquals(0,sd.size());
     }
 
     @Test
-    public void testGameStart(){
-        Game g = new Game();
-        g.deck.shuffle();
-        g.dealFour();
-        assertEquals(1,g.columns.get(0).cards.size());
-        assertEquals(1,g.columns.get(1).cards.size());
-        assertEquals(1,g.columns.get(2).cards.size());
-        assertEquals(1,g.columns.get(3).cards.size());
+    public void testDraw(){
+        AcesUpDeck ad = new AcesUpDeck();
+        SpanishDeck sd = new SpanishDeck();
+
+        // assert that these cards are in the deck
+        assertNotNull(ad.draw(new Card(4, Suit.Hearts)));
+        assertNotNull(sd.draw(new Card(4, Suit.Coins)));
+
+        // assert that cards are still in the deck
+        assertNotNull(ad.draw());
+        assertNotNull(sd.draw());
+
+        // draw all the cards
+        for (int i = 0; i < 51; i++)
+            ad.draw();
+
+        // deck is now empty. draw should return null
+        assertNull(ad.draw());
+        assertNull(ad.draw(new Card(4, Suit.Hearts)));
     }
-
-    @Test
-    public void testCustomDeal(){
-        Game g = new Game();
-        g.customDeal(0,3,6,9);
-        assertEquals("2Clubs",g.columns.get(0).cards.get(0).toString());
-        assertEquals("3Clubs",g.columns.get(1).cards.get(0).toString());
-        assertEquals("4Clubs",g.columns.get(2).cards.get(0).toString());
-        assertEquals("5Clubs",g.columns.get(3).cards.get(0).toString());
-    }
-
-    @Test
-    public void testRemoveFunction(){
-        Game g = new Game();
-        g.customDeal(0,3,6,9);
-        g.remove(2);
-        assertEquals(0,g.columns.get(2).cards.size());
-    }
-
-
-
 }

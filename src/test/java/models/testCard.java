@@ -5,28 +5,25 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class testCard {
+
     @Test
     public void testGetSuit(){
-        Card c = new Card(5,Suit.Clubs);
-        assertEquals(Suit.Clubs,c.getSuit());
+        Card c = new Card(5, Suit.Clubs);
+        assertEquals(Suit.Clubs, c.getSuit());
     }
 
     @Test
     public void testToString(){
-        Card c = new Card(5,Suit.Clubs);
-        assertEquals("5Clubs",c.toString());
+        Card c1 = new Card(5, Suit.Clubs);
+        assertEquals("5 \u2663", c1.toString());
+
+        Card c2 = new Card(5, Suit.Hearts);
+        assertEquals("5 \u2665", c2.toString());
+
+        Card c3 = new Card(5, Suit.Spades);
+        assertEquals("5 \u2660", c3.toString());
+
+        Card c4 = new Card(5, Suit.Diamonds);
+        assertEquals("5 \u2666", c4.toString());
     }
-
-    @Test
-    public void testMoveCard(){
-        Game g = new Game();
-        g.customDeal(0,3,6,9);
-        g.remove(2);
-        assertEquals(0,g.columns.get(2).cards.size());
-        g.move(0,2);
-        assertEquals(1,g.columns.get(2).cards.size());
-        assertEquals(0,g.columns.get(0).cards.size());
-    }
-
-
 }
