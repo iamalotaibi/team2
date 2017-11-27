@@ -1,6 +1,6 @@
 package models;
 
-public class Game extends Board {
+public abstract class Game extends Board {
 
     public Integer score = new Integer(0);
     public String status = new String("");
@@ -20,22 +20,6 @@ public class Game extends Board {
         end_state = hasGameBeenWon();
     }
 
-    // checks if card at columnNumber can be removed according to game rules
-    // if it can, call super.remove(columnNumber)
-    public void remove(int columnNumber) {
-        // Remove the top card from the indicated column
-        if (isCardRemovable(columnNumber)) {
-            Card rem_card = getTopCard(columnNumber);
-            super.remove(columnNumber);
-            this.status = rem_card.toString() + " (Removed)";
-            System.out.println("Removed from column " + columnNumber );
-
-            end_state = hasGameBeenWon();
-        } else {
-            System.out.println("Cannot remove from column " + columnNumber );
-        }
-    }
-
     // checks if card at columnNumber can be moved according to game rules
     // if it can, call super.move(columnFrom, columnTo)
     public void move(int columnFrom, int columnTo) {
@@ -46,6 +30,12 @@ public class Game extends Board {
         }
 
         end_state = hasGameBeenWon();
+    }
+
+    // checks if card at columnNumber can be removed according to game rules
+    // if it can, call super.remove(columnNumber)
+    public void remove(int columnNumber) {
+        super.remove(columnNumber);
     }
 
     // returns true if there are no cards left if the deck,
@@ -71,14 +61,14 @@ public class Game extends Board {
     //         0 if moves can still be made.
     public int hasGameBeenWon() {
         int cards_left = this.cols.get(0).size() + this.cols.get(1).size() + this.cols.get(2).size() + this.cols.get(3).size();
-        boolean end_state = inEndState();
+        boolean bend_state = inEndState();
         // The only way cards_left could equal 4 is if the 4 aces are left
-        if (end_state && cards_left == 4) {
+        if (bend_state && cards_left == 4) {
             this.status = "Game over! You win!";
             System.out.println("The game is over!");
             System.out.println("You win!");
             return 1;
-        } else if (end_state) {
+        } else if (bend_state) {
             this.status = "Game over! You lose!";
             System.out.println("The game is over!");
             System.out.println("You lose!");
@@ -90,29 +80,7 @@ public class Game extends Board {
     }
 
     public int getScore() {
-        this.score = 52 - (this.cols.get(0).size() +
-                this.cols.get(1).size() +
-                this.cols.get(2).size() +
-                this.cols.get(3).size() +
-                this.deck.size());
-        return this.score;
-    }
-
-    // returns true if card at column can be removed
-    public boolean isCardRemovable(int column) {
-        // Validate
-        if (column < 0 || column > 3 || isColumnEmpty(column))
-            return false;
-        // Test if card can be removed
-        Card c = getTopCard(column);
-        for (int i = 0; i < 4; ++i) {
-            if (i != column && !isColumnEmpty(i)) {
-                Card compare = getTopCard(i);
-                if (compare.getSuit() == c.getSuit() && compare.getValue() > c.getValue())
-                    return true;
-            }
-        }
-        return false;
+        return 0;
     }
 
     // returns true if card at column can be moved
@@ -125,6 +93,11 @@ public class Game extends Board {
             if (i != column && isColumnEmpty(i))
                 return true;
         }
+        return false;
+    }
+
+    // returns true if card at column can be removed
+    public boolean isCardRemovable(int column) {
         return false;
     }
 }

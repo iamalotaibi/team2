@@ -33,7 +33,8 @@ public class ApplicationController {
     }
 
     public Result initGame() {
-        this.ui = new UI();
+        // Pass 0 or 1 depending on the game played
+        this.ui = new UI(1);
         return Results.json().render(this.ui);
     }
 

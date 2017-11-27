@@ -1,6 +1,8 @@
 package controllers;
 
 import models.Game;
+import models.AcesUpGame;
+import models.SpanishGame;
 
 public class UI {
 
@@ -10,8 +12,11 @@ public class UI {
     public Integer top_card_modes[];
     public Integer top_card_rows[];
 
-    public UI() {
-        this.game = new Game();
+    public UI(int game_type) {
+        if (game_type == 0)
+            this.game = new AcesUpGame();
+        else
+            this.game = new SpanishGame();
         this.game.dealFour();
 
         this.card_selected = false;
