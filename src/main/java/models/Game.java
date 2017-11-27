@@ -79,9 +79,7 @@ public abstract class Game extends Board {
         }
     }
 
-    public int getScore() {
-        return 0;
-    }
+    public abstract int getScore();
 
     // returns true if card at column can be moved
     public boolean isCardMovable(int column) {
@@ -97,7 +95,5 @@ public abstract class Game extends Board {
     }
 
     // returns true if card at column can be removed
-    public boolean isCardRemovable(int column) {
-        return false;
-    }
+    public abstract boolean isCardRemovable(int column);
 }

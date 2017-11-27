@@ -21,24 +21,31 @@ public class SpanishGame extends Game {
         // Validate
         if (column < 0 || column > 3 || isColumnEmpty(column))
             return;
+        // The card at the column is removed if a card at a different column is of the same suit and a higher value.
         Card c1 = getTopCard(column);
-        // If card at column is a Joker, we remove both if there is another card that is a Joker
-        if (c1.suit == Suit.Jokers) {
-            for (int i = 0; i < 4; ++i) {
-                if (i != column && !isColumnEmpty(i)) {
-                    Card c2 = getTopCard(i);
-                    if (c2.suit == Suit.Jokers) {
-                        super.remove(column);
-                        super.remove(i);
-                        this.status = "Removed two Jokers";
-                    }
+        for (int i = 0; i < 4; ++i) {
+            if (i != column && !isColumnEmpty(i)) {
+                Card c2 = getTopCard(i);
+                if (c2.getSuit() == c1.getSuit() && c2.getValue() > c1.getValue()) {
+                    super.remove(column);
+                    this.status = c1.toString() + " (Removed)";
+                    end_state = hasGameBeenWon();
+                    return;
                 }
             }
         }
-        // If card at column is not a Joker, and there is another card that is either of the same suit or is a Joker, we remove the card.
-        else if (isCardRemovable(column)) {
-            super.remove(column);
-            this.status = c1.toString() + " (Removed)";
+        // The card at the column is removed if a card at a different column is a Joker, in which case the Joker is also removed.
+        for (int i = 0; i < 4; ++i) {
+            if (i != column && !isColumnEmpty(i)) {
+                Card c2 = getTopCard(i);
+                if (c2.getSuit() == Suit.Jokers) {
+                    super.remove(column);
+                    super.remove(i);
+                    this.status = c1.toString() + " and " + c2.toString() + " (Removed)";
+                    end_state = hasGameBeenWon();
+                    return;
+                }
+            }
         }
     }
 
@@ -53,7 +60,7 @@ public class SpanishGame extends Game {
             if (i != column && !isColumnEmpty(i)) {
                 Card c2 = getTopCard(i);
                 if ((c2.getSuit() == c1.getSuit() && c2.getValue() > c1.getValue()) ||
-                        (c2.getSuit() == Suit.Jokers && c2.getValue() >= c1.getValue()))
+                        (c2.getSuit() == Suit.Jokers))
                     return true;
             }
         }
