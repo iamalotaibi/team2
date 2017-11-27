@@ -18,10 +18,14 @@ public class Board {
     public void dealFour() {
         // remove the top card from the deck and add it to a column
         // repeat for each of the four columns
-        for (int i = 0; i < 4; ++i) {
+        for (int i = 0; i < 4; ++i)
             if (deck.size() > 0)
                 addCardToCol(i, deck.draw());
-        }
+    }
+
+    public void customDeal(ArrayList<Card> list) {
+        for (int i = 0; i < 4; i++)
+            addCardToCol(i, list.get(i));
     }
 
     public Card getTopCard(int columnNumber) {

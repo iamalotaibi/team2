@@ -49,10 +49,6 @@ public class testDeck {
         AcesUpDeck ad = new AcesUpDeck();
         SpanishDeck sd = new SpanishDeck();
 
-        // assert that these cards are in the deck
-        assertNotNull(ad.draw(new Card(4, Suit.Hearts)));
-        assertNotNull(sd.draw(new Card(4, Suit.Coins)));
-
         // assert that cards are still in the deck
         assertNotNull(ad.draw());
         assertNotNull(sd.draw());
@@ -63,6 +59,5 @@ public class testDeck {
 
         // deck is now empty. draw should return null
         assertNull(ad.draw());
-        assertNull(ad.draw(new Card(4, Suit.Hearts)));
     }
 }
