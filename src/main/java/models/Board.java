@@ -24,8 +24,8 @@ public class Board {
     }
 
     public void customDeal(ArrayList<Card> list) {
-        for (int i = 0; i < 4; i++)
-            addCardToCol(i, list.get(i));
+        for (int i = 0; i < list.size(); ++i)
+            addCardToCol(i%4, list.get(i));
     }
 
     public Card getTopCard(int columnNumber) {

@@ -2,22 +2,24 @@ package models;
 
 public abstract class Game extends Board {
 
-    public Integer score = new Integer(0);
-    public String status = new String("");
+    public String status;
+    public Integer score;
 
     // Stores the state of the game
     //    0 if moves can still be made,
     //    1 if the game has been won,
     //   -1 if the game has been lost.
-    public int end_state;
+    public Integer end_state;
 
     public Game() {
+        status = new String();
+        score = 0;
         end_state = 0;
     }
 
     public void dealFour() {
         super.dealFour();
-        end_state = hasGameBeenWon();
+        updateGameEndState();
     }
 
     // checks if card at columnNumber can be moved according to game rules
@@ -26,16 +28,15 @@ public abstract class Game extends Board {
         // remove the top card from the columnFrom column, add it to the columnTo column
         if (isCardMovable(columnFrom)) {
             super.move(columnFrom, columnTo);
-            System.out.println("Moved: from (" + columnFrom + "), to (" + columnTo + ").");
+            this.status = "Moved card from column " + String.valueOf(columnFrom) + " to column " + String.valueOf(columnTo);
         }
-
-        end_state = hasGameBeenWon();
+        updateGameEndState();
     }
 
     // checks if card at columnNumber can be removed according to game rules
-    // if it can, call super.remove(columnNumber)
-    public void remove(int columnNumber) {
-        super.remove(columnNumber);
+    // if it can, call super.remove(column)
+    public void remove(int column) {
+        super.remove(column);
     }
 
     // returns true if there are no cards left if the deck,
@@ -56,35 +57,35 @@ public abstract class Game extends Board {
         return true;
     }
 
-    // returns 1 if the game has been won,
-    //        -1 if the game has been lost,
-    //         0 if moves can still be made.
-    public int hasGameBeenWon() {
+    // Sets end_state to:
+    //   1 if the game has been won,
+    //  -1 if the game has been lost,
+    //   0 if moves can still be made.
+    protected void updateGameEndState() {
         int cards_left = this.cols.get(0).size() + this.cols.get(1).size() + this.cols.get(2).size() + this.cols.get(3).size();
-        boolean bend_state = inEndState();
         // The only way cards_left could equal 4 is if the 4 aces are left
-        if (bend_state && cards_left == 4) {
-            this.status = "Game over! You win!";
-            System.out.println("The game is over!");
-            System.out.println("You win!");
-            return 1;
-        } else if (bend_state) {
-            this.status = "Game over! You lose!";
-            System.out.println("The game is over!");
-            System.out.println("You lose!");
-            System.out.println("Score: " + getScore());
-            return -1;
-        } else {
-            return 0;
+        updateScore();
+        if (inEndState()) {
+            if (cards_left == 4) {
+                this.status = "Game over! You win!";
+                end_state = 1;
+            }
+            else {
+                this.status = "Game over! You lose!";
+                end_state = -1;
+            }
+        }
+        else {
+            end_state = 0;
         }
     }
 
-    public abstract int getScore();
+    protected abstract void updateScore();
 
     // returns true if card at column can be moved
     public boolean isCardMovable(int column) {
         // Validate
-        if (column < 0 || column > 3 || isColumnEmpty(column) || getTopCard(column).value != 14)
+        if (column < 0 || column > 3 || isColumnEmpty(column) || getTopCard(column).getValue() != 14)
             return false;
         // Test if card can be moved
         for (int i = 0; i < 4; ++i) {
@@ -96,4 +97,16 @@ public abstract class Game extends Board {
 
     // returns true if card at column can be removed
     public abstract boolean isCardRemovable(int column);
+
+    // Returns the state of the game
+    //    0 if moves can still be made,
+    //    1 if the game has been won,
+    //   -1 if the game has been lost.
+    public int getGameEndState() {
+        return end_state;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }

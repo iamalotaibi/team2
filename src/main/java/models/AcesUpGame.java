@@ -6,13 +6,12 @@ public class AcesUpGame extends Game {
         deck = new AcesUpDeck();
     }
 
-    public int getScore() {
+    protected void updateScore() {
         this.score = 52 - (this.cols.get(0).size() +
                 this.cols.get(1).size() +
                 this.cols.get(2).size() +
                 this.cols.get(3).size() +
                 this.deck.size());
-        return this.score;
     }
 
     // checks if card at columnNumber can be removed according to game rules
@@ -23,11 +22,7 @@ public class AcesUpGame extends Game {
             Card rem_card = getTopCard(columnNumber);
             super.remove(columnNumber);
             this.status = rem_card.toString() + " (Removed)";
-            System.out.println("Removed from column " + columnNumber );
-
-            end_state = hasGameBeenWon();
-        } else {
-            System.out.println("Cannot remove from column " + columnNumber );
+            updateGameEndState();
         }
     }
 
