@@ -1,39 +1,25 @@
 package models;
 
-public class Game extends Board {
+public abstract class Game extends Board {
 
-    public Integer score = new Integer(0);
-    public String status = new String("");
+    public String status;
+    public Integer score;
 
     // Stores the state of the game
     //    0 if moves can still be made,
     //    1 if the game has been won,
     //   -1 if the game has been lost.
-    public int end_state;
+    public Integer end_state;
 
     public Game() {
+        status = new String();
+        score = 0;
         end_state = 0;
     }
 
     public void dealFour() {
         super.dealFour();
-        end_state = hasGameBeenWon();
-    }
-
-    // checks if card at columnNumber can be removed according to game rules
-    // if it can, call super.remove(columnNumber)
-    public void remove(int columnNumber) {
-        // Remove the top card from the indicated column
-        if (isCardRemovable(columnNumber)) {
-            Card rem_card = getTopCard(columnNumber);
-            super.remove(columnNumber);
-            this.status = rem_card.toString() + " (Removed)";
-            System.out.println("Removed from column " + columnNumber );
-
-            end_state = hasGameBeenWon();
-        } else {
-            System.out.println("Cannot remove from column " + columnNumber );
-        }
+        updateGameEndState();
     }
 
     // checks if card at columnNumber can be moved according to game rules
@@ -42,10 +28,15 @@ public class Game extends Board {
         // remove the top card from the columnFrom column, add it to the columnTo column
         if (isCardMovable(columnFrom)) {
             super.move(columnFrom, columnTo);
-            System.out.println("Moved: from (" + columnFrom + "), to (" + columnTo + ").");
+            this.status = "Moved card from column " + String.valueOf(columnFrom) + " to column " + String.valueOf(columnTo);
         }
+        updateGameEndState();
+    }
 
-        end_state = hasGameBeenWon();
+    // checks if card at columnNumber can be removed according to game rules
+    // if it can, call super.remove(column)
+    public void remove(int column) {
+        super.remove(column);
     }
 
     // returns true if there are no cards left if the deck,
@@ -66,59 +57,35 @@ public class Game extends Board {
         return true;
     }
 
-    // returns 1 if the game has been won,
-    //        -1 if the game has been lost,
-    //         0 if moves can still be made.
-    public int hasGameBeenWon() {
+    // Sets end_state to:
+    //   1 if the game has been won,
+    //  -1 if the game has been lost,
+    //   0 if moves can still be made.
+    protected void updateGameEndState() {
         int cards_left = this.cols.get(0).size() + this.cols.get(1).size() + this.cols.get(2).size() + this.cols.get(3).size();
-        boolean end_state = inEndState();
         // The only way cards_left could equal 4 is if the 4 aces are left
-        if (end_state && cards_left == 4) {
-            this.status = "Game over! You win!";
-            System.out.println("The game is over!");
-            System.out.println("You win!");
-            return 1;
-        } else if (end_state) {
-            this.status = "Game over! You lose!";
-            System.out.println("The game is over!");
-            System.out.println("You lose!");
-            System.out.println("Score: " + getScore());
-            return -1;
-        } else {
-            return 0;
-        }
-    }
-
-    public int getScore() {
-        this.score = 52 - (this.cols.get(0).size() +
-                this.cols.get(1).size() +
-                this.cols.get(2).size() +
-                this.cols.get(3).size() +
-                this.deck.size());
-        return this.score;
-    }
-
-    // returns true if card at column can be removed
-    public boolean isCardRemovable(int column) {
-        // Validate
-        if (column < 0 || column > 3 || isColumnEmpty(column))
-            return false;
-        // Test if card can be removed
-        Card c = getTopCard(column);
-        for (int i = 0; i < 4; ++i) {
-            if (i != column && !isColumnEmpty(i)) {
-                Card compare = getTopCard(i);
-                if (compare.getSuit() == c.getSuit() && compare.getValue() > c.getValue())
-                    return true;
+        updateScore();
+        if (inEndState()) {
+            if (cards_left == 4) {
+                this.status = "Game over! You win!";
+                end_state = 1;
+            }
+            else {
+                this.status = "Game over! You lose!";
+                end_state = -1;
             }
         }
-        return false;
+        else {
+            end_state = 0;
+        }
     }
+
+    protected abstract void updateScore();
 
     // returns true if card at column can be moved
     public boolean isCardMovable(int column) {
         // Validate
-        if (column < 0 || column > 3 || isColumnEmpty(column) || getTopCard(column).value != 14)
+        if (column < 0 || column > 3 || isColumnEmpty(column) || getTopCard(column).getValue() != 14)
             return false;
         // Test if card can be moved
         for (int i = 0; i < 4; ++i) {
@@ -126,5 +93,20 @@ public class Game extends Board {
                 return true;
         }
         return false;
+    }
+
+    // returns true if card at column can be removed
+    public abstract boolean isCardRemovable(int column);
+
+    // Returns the state of the game
+    //    0 if moves can still be made,
+    //    1 if the game has been won,
+    //   -1 if the game has been lost.
+    public int getGameEndState() {
+        return end_state;
+    }
+
+    public int getScore() {
+        return score;
     }
 }

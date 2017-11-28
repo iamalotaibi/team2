@@ -27,33 +27,46 @@ public class Card implements Serializable {
         String str = "";
         switch (value) {
             case 11:
-                str = "J ";
+                str += "J";
                 break;
             case 12:
-                str = "Q ";
+                str += "Q";
                 break;
             case 13:
-                str = "K ";
+                str += "K";
                 break;
             case 14:
-                str = "A ";
+                str += "A";
                 break;
             default:
-                str = value + " ";
+                str += value;
                 break;
         }
+        str += " ";
         switch (suit) {
             case Hearts:
-                str = str + "\u2665";
+                str += "\u2665";
                 break;
             case Spades:
-                str = str + "\u2660";
+                str += "\u2660";
                 break;
             case Diamonds:
-                str = str + "\u2666";
+                str += "\u2666";
                 break;
             case Clubs:
-                str = str + "\u2663";
+                str += "\u2663";
+                break;
+            case Coins:
+                str += "Coins";
+                break;
+            case Cups:
+                str += "Cups";
+                break;
+            case Swords:
+                str += "Swords";
+                break;
+            case Jokers:
+                str += "Jokers";
                 break;
         }
         return str;

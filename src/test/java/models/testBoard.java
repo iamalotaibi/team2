@@ -10,29 +10,6 @@ import static org.junit.Assert.*;
 public class testBoard {
 
     @Test
-    public void testGameCreation(){
-        Game g = new Game();
-        assertNotNull(g);
-    }
-
-    @Test
-    public void testGameBuildDeck(){
-        Game g = new Game();
-        assertEquals(52, g.deck.size());
-    }
-
-    @Test
-    public void testGameStart() {
-        Game g = new Game();
-        g.deck.shuffle();
-        g.dealFour();
-        assertEquals(1, g.cols.get(0).size());
-        assertEquals(1, g.cols.get(1).size());
-        assertEquals(1, g.cols.get(2).size());
-        assertEquals(1, g.cols.get(3).size());
-    }
-
-    @Test
     public void testCustomDeal(){
         Board b = new Board();
         ArrayList<Card> list = new ArrayList<Card>();
@@ -50,9 +27,9 @@ public class testBoard {
     @Test
     public void testRemoveFunction(){
         Board b = new Board();
+        b.deck = new AcesUpDeck();
         b.dealFour();
         b.remove(2);
         assertEquals(0, b.cols.get(2).size());
     }
-
 }
