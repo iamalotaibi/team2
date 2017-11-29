@@ -179,7 +179,9 @@ function processCard(card) {
             str += "K";
             break;
         case 14:
-            str += "A";
+            if (card.suit != "Jokers") {
+                str += "A";
+            }
             break;
         default:
             str += card.value;
