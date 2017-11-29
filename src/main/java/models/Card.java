@@ -10,12 +10,13 @@ import static models.Suit.*;
 public class Card implements Serializable {
     public final int value;
     public final Suit suit;
-    public String htmlString = new String("");
+    public final String htmlString;
 
     @JsonCreator
-    public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit) {
+    public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit, @JsonProperty("htmlString") String htmlString) {
         this.value = value;
         this.suit = suit;
+        this.htmlString = htmlString;
     }
 
     public Suit getSuit() {
@@ -62,85 +63,54 @@ public class Card implements Serializable {
         return str;
     }
 
-    public String htmlString(Card card) {
+    public static String getHtmlString(int value, Suit suit) {
         String str = "";
-        switch(card.suit) {
-        case Hearts:
+        if (suit == Suit.Hearts) {
             str += "<span class=\"redCard\">\u2665</span>";
-            break;
-        case Spades:
+
+        } else if (suit == Suit.Spades) {
             str += "<span class=\"blackCard\">\u2660</span>";
-            break;
-        case Diamonds:
+
+        } else if (suit == Suit.Diamonds) {
             str += "<span class=\"redCard\">\u2666</span>";
-            break;
-        case Clubs:
+
+        } else if (suit == Suit.Clubs) {
             str += "<span class=\"blackCard\">\u2663</span>";
-            break;
-    }
+
+        } else if (suit == Suit.Coins) {
+            str += "<span class=\"blackCard\">\u2663</span>";
+
+        } else if (suit == Suit.Cups) {
+            str += "<span class=\"blackCard\">\u2663</span>";
+
+        } else if (suit == Suit.Swords) {
+            str += "<span class=\"blackCard\">\u2663</span>";
+
+        } else if (suit == Suit.Jokers) {
+            str += "<span class=\"blackCard\">\u2663</span>";
+
+        }
 
     str += "<sub class=\"cardID\">";
-    switch(card.value) {
-        case 11:
+        if (value == 11) {
             str += "J";
-            break;
-        case 12:
+
+        } else if (value == 12) {
             str += "Q";
-            break;
-        case 13:
+
+        } else if (value == 13) {
             str += "K";
-            break;
-        case 14:
+
+        } else if (value == 14) {
             str += "A";
-            break;
-        default:
-            str += card.value;
-            break;
-    }
+
+        } else {
+            str += value;
+
+        }
     str += "</sub>";
 
     return str;
 
     }
-
-//    function processCard(card) {
-//    var str = "";
-//
-//    switch(card.suit) {
-//        case "Hearts":
-//            str += "<span class=\"redCard\">\u2665</span>";
-//            break;
-//        case "Spades":
-//            str += "<span class=\"blackCard\">\u2660</span>";
-//            break;
-//        case "Diamonds":
-//            str += "<span class=\"redCard\">\u2666</span>";
-//            break;
-//        case "Clubs":
-//            str += "<span class=\"blackCard\">\u2663</span>";
-//            break;
-//    }
-//
-//    str += "<sub class=\"cardID\">";
-//    switch(card.value) {
-//        case 11:
-//            str += "J";
-//            break;
-//        case 12:
-//            str += "Q";
-//            break;
-//        case 13:
-//            str += "K";
-//            break;
-//        case 14:
-//            str += "A";
-//            break;
-//        default:
-//            str += card.value;
-//            break;
-//    }
-//    str += "</sub>";
-//
-//    return str;
-//}
 }
