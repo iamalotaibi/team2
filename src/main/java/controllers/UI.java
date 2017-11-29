@@ -12,7 +12,11 @@ public class UI {
     public Integer top_card_modes[];
     public Integer top_card_rows[];
 
+    public int type;
+
     public UI(int game_type) {
+        this.type = game_type;
+
         if (game_type == 0)
             this.game = new AcesUpGame();
         else

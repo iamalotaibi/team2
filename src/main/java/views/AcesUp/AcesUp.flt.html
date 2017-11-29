@@ -39,7 +39,7 @@
                 <button id="resetButton"><a href="/">Reset</a></button>
             </div>
             <div id="deck-buttons">
-                <div id="aces-up-area" class="hidden">
+                <div id="aces-up-area">
                     <button id="acesUpButton">Aces Up Deck</button>
                 </div>
                 <div id="spanish-area">
@@ -154,7 +154,7 @@ function processCard(card) {
             str += "<span class=\"blackCard\">\u2663</span>";
             break;
         case "Coins":
-            str += "<span style=\"color:#000000;\">&#127779</span>";
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/usd-circle.svg'></span>";
             break;
         case "Cups":
             str += "<span style=\"color:#000000;\">&#8852</span>";
@@ -163,7 +163,7 @@ function processCard(card) {
             str += "<span style=\"color:#000000;\">&#9876</span>";
             break;
         case "Jokers":
-            str += "<span style=\"color:#000000;\">&#127167</span>";
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/reddit-alien.svg'></span>";
             break;
     }
 
@@ -194,6 +194,15 @@ function processCard(card) {
 
 function display(data) {
     var i = 0;
+    console.log(data.type);
+    if(data.type == 0){
+        $("#acesUpButton").removeClass("hidden");
+        $("#spanishButton").addClass("hidden");
+    }
+    else{
+        $("#spanishButton").removeClass("hidden");
+        $("#acesUpButton").addClass("hidden");
+    }
     console.log(data);
 
     // Clear the table
@@ -241,7 +250,20 @@ $("#dealButton").click(function(){
         dataType:"json",
     });
 });
-
+$("#acesUpButton, #spanishButton").click(function(){
+    $.ajax({
+        type: "POST",
+        url: "/switchGame",
+        data: JSON.stringify(ui),
+        success: function(data, status) {
+            console.log("Data: " + data + "\nStatus: " + status);
+            ui = data;
+            display(data);
+        },
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+    });
+});
 $(".cardLocation").click(function() {
     var id_data = this.id.split('-'); // col-row
 

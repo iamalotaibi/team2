@@ -16,6 +16,9 @@
 
 package controllers;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import controllers.UI;
 import ninja.Context;
 import ninja.Result;
@@ -23,9 +26,14 @@ import ninja.Results;
 
 import com.google.inject.Singleton;
 import ninja.params.PathParam;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Singleton
 public class ApplicationController {
+    public int type;
 
     public UI ui;
     public Result index() {
@@ -33,8 +41,9 @@ public class ApplicationController {
     }
 
     public Result initGame() {
+        this.type = 0;
         // Pass 0 or 1 depending on the game played
-        this.ui = new UI(1);
+        this.ui = new UI(type);
         return Results.json().render(this.ui);
     }
 
@@ -42,6 +51,16 @@ public class ApplicationController {
         if (context.getRequestPath().contains("deal")) {
             this.ui.doOnDeal();
         }
+        return Results.json().render(this.ui);
+    }
+
+    public Result switchGame(Context context) {
+        // Pass 0 or 1 depending on the game played
+        if(type == 0)
+            type = 1;
+        else
+            type = 0;
+        this.ui = new UI(type);
         return Results.json().render(this.ui);
     }
 
