@@ -13,15 +13,19 @@ public class Board {
         for (int i = 0; i < 4; ++i) {
             this.cols.add(new ArrayList<Card>());
         }
-         deck = new AcesUpDeck();
     }
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column
         // repeat for each of the four columns
-        if (deck.size() == 0) { return; }
-        for (int i = 0; i < 4; i++)
-            addCardToCol(i, deck.draw());
+        for (int i = 0; i < 4; ++i)
+            if (deck.size() > 0)
+                addCardToCol(i, deck.draw());
+    }
+
+    public void customDeal(ArrayList<Card> list) {
+        for (int i = 0; i < list.size(); ++i)
+            addCardToCol(i%4, list.get(i));
     }
 
     public Card getTopCard(int columnNumber) {

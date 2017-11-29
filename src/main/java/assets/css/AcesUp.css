@@ -274,4 +274,12 @@
         margin: auto;
         margin-top: 0.25rem;
     }
+    .icon-btn{
+        min-width:30px;
+        width:30px;
+        max-width:30px;
+        min-height:30px;
+        height:30px;
+        max-height:30px;
+    }
 }

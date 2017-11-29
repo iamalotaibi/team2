@@ -4,8 +4,9 @@ public class SpanishDeck extends Deck {
 
     public SpanishDeck() {
         super();
-        for(int i = 2; i < 14; i++)
-            addCardofEachSuit(i);
+        for(int i = 2; i < 15; i++)
+            if (i != 11)
+                addCardofEachSuit(i);
         this.deck.add(new Card(14,Suit.Jokers,Card.getHtmlString(14,Suit.Jokers)));
         this.deck.add(new Card(14,Suit.Jokers,Card.getHtmlString(14,Suit.Jokers)));
         super.shuffle();

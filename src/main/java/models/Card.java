@@ -31,33 +31,46 @@ public class Card implements Serializable {
         String str = "";
         switch (value) {
             case 11:
-                str = "J ";
+                str += "J";
                 break;
             case 12:
-                str = "Q ";
+                str += "Q";
                 break;
             case 13:
-                str = "K ";
+                str += "K";
                 break;
             case 14:
-                str = "A ";
+                str += "A";
                 break;
             default:
-                str = value + " ";
+                str += value;
                 break;
         }
+        str += " ";
         switch (suit) {
             case Hearts:
-                str = str + "\u2665";
+                str += "\u2665";
                 break;
             case Spades:
-                str = str + "\u2660";
+                str += "\u2660";
                 break;
             case Diamonds:
-                str = str + "\u2666";
+                str += "\u2666";
                 break;
             case Clubs:
-                str = str + "\u2663";
+                str += "\u2663";
+                break;
+            case Coins:
+                str += "Coins";
+                break;
+            case Cups:
+                str += "Cups";
+                break;
+            case Swords:
+                str += "Swords";
+                break;
+            case Jokers:
+                str += "Jokers";
                 break;
         }
         return str;
@@ -67,50 +80,48 @@ public class Card implements Serializable {
         String str = "";
         if (suit == Suit.Hearts) {
             str += "<span class=\"redCard\">\u2665</span>";
-
-        } else if (suit == Suit.Spades) {
+        }
+        else if (suit == Suit.Spades) {
             str += "<span class=\"blackCard\">\u2660</span>";
-
-        } else if (suit == Suit.Diamonds) {
+        }
+        else if (suit == Suit.Diamonds) {
             str += "<span class=\"redCard\">\u2666</span>";
-
-        } else if (suit == Suit.Clubs) {
+        }
+        else if (suit == Suit.Clubs) {
             str += "<span class=\"blackCard\">\u2663</span>";
-
-        } else if (suit == Suit.Coins) {
-            str += "<span class=\"blackCard\">\u2663</span>";
-
-        } else if (suit == Suit.Cups) {
-            str += "<span class=\"blackCard\">\u2663</span>";
-
-        } else if (suit == Suit.Swords) {
-            str += "<span class=\"blackCard\">\u2663</span>";
-
-        } else if (suit == Suit.Jokers) {
-            str += "<span class=\"blackCard\">\u2663</span>";
-
+        }
+        else if (suit == Suit.Coins) {
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/usd-circle.svg'></span>";
+        }
+        else if (suit == Suit.Cups) {
+            str += "<span style=\"color:#000000;\">&#8852</span>";
+        }
+        else if (suit == Suit.Swords) {
+            str += "<span style=\"color:#000000;\">&#9876</span>";
+        }
+        else if (suit == Suit.Jokers) {
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/reddit-alien.svg'></span>";
         }
 
-    str += "<sub class=\"cardID\">";
+        str += "<sub class=\"cardID\">";
         if (value == 11) {
             str += "J";
-
-        } else if (value == 12) {
-            str += "Q";
-
-        } else if (value == 13) {
-            str += "K";
-
-        } else if (value == 14) {
-            str += "A";
-
-        } else {
-            str += value;
-
         }
-    str += "</sub>";
-
-    return str;
-
+        else if (value == 12) {
+            str += "Q";
+        }
+        else if (value == 13) {
+            str += "K";
+        }
+        else if (value == 14) {
+            if (suit != Suit.Jokers) {
+                str += "A";
+            }
+        }
+        else {
+            str += value;
+        }
+        str += "</sub>";
+        return str;
     }
 }
