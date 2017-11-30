@@ -105,8 +105,4 @@ public abstract class Game extends Board {
     public int getGameEndState() {
         return end_state;
     }
-
-    public int getScore() {
-        return score;
-    }
 }

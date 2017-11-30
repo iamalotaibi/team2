@@ -233,9 +233,4 @@ public class testGame {
 
 
     }
-    @Test
-    public void testGetScore() {
-        AcesUpGame g1 = new AcesUpGame();
-        assertEquals(0, g1.getScore());
-    }
 }
