@@ -13,10 +13,10 @@ public class testBoard {
     public void testCustomDeal(){
         Board b = new Board();
         ArrayList<Card> list = new ArrayList<Card>();
-        list.add(new Card(0, Suit.Hearts));
-        list.add(new Card(3, Suit.Hearts));
-        list.add(new Card(6, Suit.Hearts));
-        list.add(new Card(9, Suit.Hearts));
+        list.add(new Card(0, Suit.Hearts, Card.getHtmlString(0,Suit.Hearts)));
+        list.add(new Card(3, Suit.Hearts, Card.getHtmlString(3,Suit.Hearts)));
+        list.add(new Card(6, Suit.Hearts, Card.getHtmlString(6,Suit.Hearts)));
+        list.add(new Card(9, Suit.Hearts, Card.getHtmlString(9,Suit.Hearts)));
         b.customDeal(list);
         assertEquals("0 \u2665",b.deck.deck.get(0).toString());
         assertEquals("3 \u2665",b.deck.deck.get(1).toString());

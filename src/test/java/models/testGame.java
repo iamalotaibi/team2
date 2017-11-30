@@ -49,8 +49,8 @@ public class testGame {
     public void testMoveFunction() {
         AcesUpGame g = new AcesUpGame();
         ArrayList<Card> list = new ArrayList<Card>();
-        list.add(new Card(0, Suit.Hearts));
-        list.add(new Card(14, Suit.Spades));
+        list.add(new Card(0, Suit.Hearts, Card.getHtmlString(0,Suit.Hearts)));
+        list.add(new Card(14, Suit.Spades, Card.getHtmlString(14,Suit.Spades)));
         g.customDeal(list);
 
         // Invalid move
@@ -81,10 +81,10 @@ public class testGame {
 
         AcesUpGame g1 = new AcesUpGame();
         ArrayList<Card> list1 = new ArrayList<Card>();
-        list1.add(new Card(0, Suit.Hearts));
-        list1.add(new Card(3, Suit.Hearts));
-        list1.add(new Card(6, Suit.Hearts));
-        list1.add(new Card(9, Suit.Hearts));
+        list1.add(new Card(0, Suit.Hearts, Card.getHtmlString(0,Suit.Hearts)));
+        list1.add(new Card(3, Suit.Hearts, Card.getHtmlString(3,Suit.Hearts)));
+        list1.add(new Card(6, Suit.Hearts, Card.getHtmlString(6,Suit.Hearts)));
+        list1.add(new Card(9, Suit.Hearts, Card.getHtmlString(9,Suit.Hearts)));
         g1.customDeal(list1);
 
         // test remove at invalid column
@@ -108,10 +108,10 @@ public class testGame {
 
         SpanishGame g2 = new SpanishGame();
         ArrayList<Card> list2 = new ArrayList<Card>();
-        list2.add(new Card(1, Suit.Clubs));
-        list2.add(new Card(3, Suit.Clubs));
-        list2.add(new Card(6, Suit.Coins));
-        list2.add(new Card(9, Suit.Jokers));
+        list2.add(new Card(1, Suit.Clubs, Card.getHtmlString(1,Suit.Clubs)));
+        list2.add(new Card(3, Suit.Clubs, Card.getHtmlString(3,Suit.Clubs)));
+        list2.add(new Card(6, Suit.Coins, Card.getHtmlString(6,Suit.Coins)));
+        list2.add(new Card(9, Suit.Jokers, Card.getHtmlString(9,Suit.Jokers)));
         g2.customDeal(list2);
 
         // test remove at invalid column
