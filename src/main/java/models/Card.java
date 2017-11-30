@@ -8,11 +8,13 @@ import java.io.Serializable;
 public class Card implements Serializable {
     public final int value;
     public final Suit suit;
+    public final String htmlString;
 
     @JsonCreator
-    public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit) {
+    public Card(@JsonProperty("value") int value, @JsonProperty("suit") Suit suit, @JsonProperty("htmlString") String htmlString) {
         this.value = value;
         this.suit = suit;
+        this.htmlString = htmlString;
     }
 
     public Suit getSuit() {
@@ -69,6 +71,55 @@ public class Card implements Serializable {
                 str += "Jokers";
                 break;
         }
+        return str;
+    }
+
+    public static String getHtmlString(int value, Suit suit) {
+        String str = "";
+        if (suit == Suit.Hearts) {
+            str += "<span class=\"redCard\">\u2665</span>";
+        }
+        else if (suit == Suit.Spades) {
+            str += "<span class=\"blackCard\">\u2660</span>";
+        }
+        else if (suit == Suit.Diamonds) {
+            str += "<span class=\"redCard\">\u2666</span>";
+        }
+        else if (suit == Suit.Clubs) {
+            str += "<span class=\"blackCard\">\u2663</span>";
+        }
+        else if (suit == Suit.Coins) {
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/usd-circle.svg'></span>";
+        }
+        else if (suit == Suit.Cups) {
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/cup.svg'></span>";
+        }
+        else if (suit == Suit.Swords) {
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/swords.svg'></span>";
+        }
+        else if (suit == Suit.Jokers) {
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/reddit-alien.svg'></span>";
+        }
+
+        str += "<sub class=\"cardID\">";
+        if (value == 11) {
+            str += "J";
+        }
+        else if (value == 12) {
+            str += "Q";
+        }
+        else if (value == 13) {
+            str += "K";
+        }
+        else if (value == 14) {
+            if (suit != Suit.Jokers) {
+                str += "A";
+            }
+        }
+        else {
+            str += value;
+        }
+        str += "</sub>";
         return str;
     }
 }

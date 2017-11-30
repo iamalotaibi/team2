@@ -137,61 +137,6 @@ var card_modes_class_map = [
     "cardDestination"
 ];
 
-function processCard(card) {
-    var str = "";
-
-    switch(card.suit) {
-        case "Hearts":
-            str += "<span class=\"redCard\">\u2665</span>";
-            break;
-        case "Spades":
-            str += "<span class=\"blackCard\">\u2660</span>";
-            break;
-        case "Diamonds":
-            str += "<span class=\"redCard\">\u2666</span>";
-            break;
-        case "Clubs":
-            str += "<span class=\"blackCard\">\u2663</span>";
-            break;
-        case "Coins":
-            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/usd-circle.svg'></span>";
-            break;
-        case "Cups":
-            str += "<span style=\"color:#000000;\">&#8852</span>";
-            break;
-        case "Swords":
-            str += "<span style=\"color:#000000;\">&#9876</span>";
-            break;
-        case "Jokers":
-            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/reddit-alien.svg'></span>";
-            break;
-    }
-
-    str += "<sub class=\"cardID\">";
-    switch(card.value) {
-        case 11:
-            str += "J";
-            break;
-        case 12:
-            str += "Q";
-            break;
-        case 13:
-            str += "K";
-            break;
-        case 14:
-            if (card.suit != "Jokers") {
-                str += "A";
-            }
-            break;
-        default:
-            str += card.value;
-            break;
-    }
-    str += "</sub>";
-
-    return str;
-}
-
 function display(data) {
     var i = 0;
     console.log(data.type);
@@ -211,7 +156,7 @@ function display(data) {
     // Update cards
     for (i = 0; i < 4; ++i) {
         $.each(data.game.cols[i], function( key, val ) {
-            $( '#c' + i.toString() + ' .l' + key ).html( processCard(val) );
+            $( '#c' + i.toString() + ' .l' + key ).html( val.htmlString );
         });
     }
 
