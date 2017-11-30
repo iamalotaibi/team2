@@ -16,20 +16,14 @@
 
 package controllers;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import controllers.UI;
+
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
 
 import com.google.inject.Singleton;
 import ninja.params.PathParam;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Singleton
 public class ApplicationController {
