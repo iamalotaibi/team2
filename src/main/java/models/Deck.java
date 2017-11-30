@@ -26,6 +26,9 @@ abstract class Deck {
         return deck.size();
     }
 
+    public void setDeckSizeToZero() {
+        deck = new ArrayList<>();
+    }
     // shuffles the deck so that it is random
     protected void shuffle() {
         // Create a copy of the original deck

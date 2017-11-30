@@ -215,6 +215,27 @@ public class testGame {
     @Test
     public void testUpdateGameEndState() {
         AcesUpGame g1 = new AcesUpGame();
+        ArrayList<Card> list1 = new ArrayList<Card>();
+        list1.add(new Card(14, Suit.Hearts, Card.getHtmlString(14,Suit.Hearts)));
+        list1.add(new Card(14, Suit.Spades, Card.getHtmlString(14,Suit.Spades)));
+        list1.add(new Card(14, Suit.Clubs, Card.getHtmlString(14,Suit.Clubs)));
+        list1.add(new Card(14, Suit.Diamonds, Card.getHtmlString(14,Suit.Diamonds)));
+        g1.customDeal(list1);
+        g1.deck.setDeckSizeToZero();
+        g1.updateGameEndState();
+        int cards_left = g1.cols.get(0).size() + g1.cols.get(1).size() + g1.cols.get(2).size() + g1.cols.get(3).size();
+        assertEquals(1, g1.cols.get(0).size());
+        assertEquals(1, g1.cols.get(1).size());
+        assertEquals(1, g1.cols.get(2).size());
+        assertEquals(1, g1.cols.get(3).size());
+        assertEquals(4, cards_left);
+        assertEquals(1, g1.getGameEndState());
+
+
+    }
+    @Test
+    public void testGetScore() {
+        AcesUpGame g1 = new AcesUpGame();
         assertEquals(0, g1.getScore());
     }
 }
