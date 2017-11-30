@@ -212,4 +212,9 @@ public class testGame {
         assertEquals(false, g2.isCardMovable(2));
         assertEquals(false, g2.isCardMovable(3));
     }
+    @Test
+    public void testUpdateGameEndState() {
+        AcesUpGame g1 = new AcesUpGame();
+        assertEquals(0, g1.getScore());
+    }
 }
