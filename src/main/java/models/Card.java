@@ -92,10 +92,10 @@ public class Card implements Serializable {
             str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/usd-circle.svg'></span>";
         }
         else if (suit == Suit.Cups) {
-            str += "<span style=\"color:#000000;\">&#8852</span>";
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/cup.svg'></span>";
         }
         else if (suit == Suit.Swords) {
-            str += "<span style=\"color:#000000;\">&#9876</span>";
+            str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/swords.svg'></span>";
         }
         else if (suit == Suit.Jokers) {
             str += "<span style=\"color:#000000;\"><img class='icon-btn' src='/assets/icons/reddit-alien.svg'></span>";
