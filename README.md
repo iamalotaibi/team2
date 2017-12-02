@@ -1,2 +1,21 @@
-# Team 2
-This repo will contain all the assignments for CS-361 for Team 2.
+# Aces Up
+Is a card game based on Aces Up.
+
+## Getting Started
+Access this [website](https://aceuposu.herokuapp.com)
+
+## Built With
+
+* [jQuery (Javascript framework)](https://jquery.com/) - Front-end
+* [Ninja (Java framework)](http://www.ninjaframework.org/) - Back-end
+## Authors
+
+* **Anton Synytsia** - [AntonSynytsiaOSU](https://github.com/AntonSynytsiaOSU), [antonsynytsia](https://github.com/antonsynytsia)
+* **Gabriel Janzen** - [janzeng](https://github.com/janzeng)
+* **Lucas Frey** - [lcsfrey](https://github.com/lcsfrey)
+* **Mazen Alotaibi** - [iamalotaibi](https://github.com/iamalotaibi)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+
