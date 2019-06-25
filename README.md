@@ -13,7 +13,7 @@ Access this [website](https://aceuposu.herokuapp.com)
 * **Anton Synytsia** - [AntonSynytsiaOSU](https://github.com/AntonSynytsiaOSU), [antonsynytsia](https://github.com/antonsynytsia)
 * **Gabriel Janzen** - [janzeng](https://github.com/janzeng)
 * **Lucas Frey** - [lcsfrey](https://github.com/lcsfrey)
-* **Mazen Alotaibi** - [iamalotaibi](https://github.com/iamalotaibi)
+* **Mazen Alotaibi** - [madebymaze](https://github.com/madebymaze)
 
 ## License
 
